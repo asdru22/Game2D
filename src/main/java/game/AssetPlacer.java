@@ -5,10 +5,10 @@ import game.object.Chest;
 import game.object.Door;
 import game.object.Key;
 
-public class AssetSetter {
+public class AssetPlacer {
     private final Panel gamePanel;
 
-    public AssetSetter(Panel gamePanel) {
+    public AssetPlacer(Panel gamePanel) {
         this.gamePanel = gamePanel;
     }
 

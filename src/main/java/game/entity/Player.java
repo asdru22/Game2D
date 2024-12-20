@@ -14,17 +14,13 @@ public class Player extends Entity {
     private final int screenX, screenY;
 
     public Player(Panel gamePanel, KeyHandler keyHandler) {
+        super(23, 21, 4, "player");
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
-        int tileSize = gamePanel.getPanelSettings().getTileSize();
 
+        int tileSize = gamePanel.getPanelSettings().getTileSize();
         screenX = gamePanel.getPanelSettings().getScreenWidth() / 2 - tileSize / 2;
         screenY = gamePanel.getPanelSettings().getScreenHeight() / 2 - tileSize / 2;
-
-        worldX = tileSize * 23;
-        worldY = tileSize * 21;
-        speed = 4;
-        this.initialize("entity/player/walking");
 
         hitbox = new Rectangle();
         hitbox.x = 8;
@@ -56,12 +52,7 @@ public class Player extends Entity {
             this.direction.add(Direction.RIGHT);
         }
 
-        spriteCounter++;
-        if (spriteCounter > 12) {
-            spriteCounter = 0;
-            spriteNum = (spriteNum == 0) ? 1 : 0;
-        }
-
+        this.getAnimations().update();
 
         this.resetCollisions();
         gamePanel.getCollisionChecker().checkTile(this);
@@ -84,13 +75,15 @@ public class Player extends Entity {
     public void draw(Graphics2D g2d) {
         g2d.setColor(Color.WHITE);
 
-        BufferedImage image = null;
+        if (direction.contains(Direction.UP)) this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingUp);
+        if (direction.contains(Direction.DOWN))
+            this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingDown);
+        if (direction.contains(Direction.LEFT))
+            this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingLeft);
+        if (direction.contains(Direction.RIGHT))
+            this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingRight);
 
-        if (direction.contains(Direction.UP)) image = (spriteNum == 0) ? up1 : up2;
-        if (direction.contains(Direction.DOWN)) image = (spriteNum == 0) ? down1 : down2;
-        if (direction.contains(Direction.LEFT)) image = (spriteNum == 0) ? left1 : left2;
-        if (direction.contains(Direction.RIGHT)) image = (spriteNum == 0) ? right1 : right2;
-
+        BufferedImage image = this.getAnimations().getCurrentAnimation().getCurrentFrame();
         int tileSize = this.gamePanel.getPanelSettings().getTileSize();
         g2d.drawImage(image, screenX, screenY, tileSize, tileSize, null);
     }

@@ -1,10 +1,8 @@
 package game.entity;
 
-
-import io.IOUtils;
+import core.Panel;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.EnumSet;
 
 public abstract class Entity {
@@ -12,24 +10,29 @@ public abstract class Entity {
     protected int worldX;
     protected int worldY;
     protected int speed;
-    protected BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-    protected int spriteCounter = 0, spriteNum = 0;
     protected Rectangle hitbox;
+    protected final String id;
 
     protected final EnumSet<Direction> direction = EnumSet.noneOf(Direction.class);
     protected final EnumSet<Direction> collisions = EnumSet.noneOf(Direction.class);
-    public void initialize(String path) {
+
+    private AnimationHandler animations;
+
+    public Entity(int worldX, int worldY, int speed, String id) {
+        this.worldX = worldX * Panel.getTileSize();
+        this.worldY = worldY * Panel.getTileSize();
+        this.speed = speed;
+        this.id = id;
 
         resetCollisions();
         direction.add(Direction.DOWN);
-        this.up1 = IOUtils.loadImage(String.format("%s/up_1", path));
-        this.up2 = IOUtils.loadImage(String.format("%s/up_2", path));
-        this.down1 = IOUtils.loadImage(String.format("%s/down_1", path));
-        this.down2 = IOUtils.loadImage(String.format("%s/down_2", path));
-        this.left1 = IOUtils.loadImage(String.format("%s/left_1", path));
-        this.left2 = IOUtils.loadImage(String.format("%s/left_2", path));
-        this.right1 = IOUtils.loadImage(String.format("%s/right_1", path));
-        this.right2 = IOUtils.loadImage(String.format("%s/right_2", path));
+
+        animations = new AnimationHandler(this);
+        animations.add(AnimationHandler.Animations.WalkingUp, "walking/up", 2);
+        animations.add(AnimationHandler.Animations.WalkingDown, "walking/down", 2);
+        animations.add(AnimationHandler.Animations.WalkingLeft, "walking/left", 2);
+        animations.add(AnimationHandler.Animations.WalkingRight, "walking/right", 2);
+
     }
 
     public int getWorldY() {
@@ -50,6 +53,14 @@ public abstract class Entity {
 
     public void resetCollisions() {
         collisions.clear();
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public AnimationHandler getAnimations() {
+        return animations;
     }
 }
 

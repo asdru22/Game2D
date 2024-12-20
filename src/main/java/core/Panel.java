@@ -1,6 +1,6 @@
 package core;
 
-import game.AssetSetter;
+import game.AssetPlacer;
 import game.entity.CollisionChecker;
 import game.entity.Player;
 import game.object.BaseObject;
@@ -21,8 +21,8 @@ public class Panel extends JPanel implements Runnable {
     private final WorldSettings worldSettings;
     private final CollisionChecker collisionChecker;
     private final TileManager tileManager;
-
-    private final AssetSetter assetSetter;
+    private static int TILE_SIZE;
+    private final AssetPlacer assetPlacer;
 
     Player p;
     public ArrayList<BaseObject> objs = new ArrayList<>();
@@ -33,8 +33,11 @@ public class Panel extends JPanel implements Runnable {
         this.worldSettings = new WorldSettings(panelSettings.getTileSize());
         this.keyHandler = new KeyHandler();
         this.game = game;
+
+        TILE_SIZE = panelSettings.getTileSize();
+
         this.collisionChecker = new CollisionChecker(this);
-        this.assetSetter = new AssetSetter(this);
+        this.assetPlacer = new AssetPlacer(this);
         // panel settings
         this.setPreferredSize(new Dimension(
                 panelSettings.getScreenWidth(), panelSettings.getScreenHeight()));
@@ -46,7 +49,7 @@ public class Panel extends JPanel implements Runnable {
 
         p = new Player(this, keyHandler);
         tileManager = new TileManager(this);
-        assetSetter.setObject();
+        assetPlacer.setObject();
 
         // game thread
         this.gameThread = new Thread(this);
@@ -121,5 +124,9 @@ public class Panel extends JPanel implements Runnable {
 
     public TileManager getTileManager() {
         return tileManager;
+    }
+
+    public static int getTileSize(){
+        return TILE_SIZE;
     }
 }

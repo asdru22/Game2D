@@ -1,7 +1,7 @@
-package entity;
+package game.entity;
 
 import core.Panel;
-import tile.TileManager;
+import game.tile.TileManager;
 
 public class CollisionChecker {
     private final Panel gamePanel;

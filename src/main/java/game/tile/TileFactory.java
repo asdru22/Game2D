@@ -1,4 +1,4 @@
-package tile;
+package game.tile;
 
 public class TileFactory {
     public static final Tile GRASS = new Tile("grass",false);

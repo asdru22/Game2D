@@ -1,4 +1,7 @@
-package PACKAGE_NAME;
+import core.Game;
 
 public class Main {
+    public static void main(String[] args) {
+        new Game();
+    }
 }

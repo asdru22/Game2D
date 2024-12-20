@@ -1,4 +1,4 @@
-package entity;
+package game.entity;
 
 
 import io.IOUtils;
@@ -6,8 +6,6 @@ import io.IOUtils;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
 
 public abstract class Entity {
 
@@ -23,7 +21,7 @@ public abstract class Entity {
     public void initialize(String path) {
 
         resetCollisions();
-
+        direction.add(Direction.DOWN);
         this.up1 = IOUtils.loadImage(String.format("%s/up_1", path));
         this.up2 = IOUtils.loadImage(String.format("%s/up_2", path));
         this.down1 = IOUtils.loadImage(String.format("%s/down_1", path));

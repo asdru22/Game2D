@@ -1,7 +1,7 @@
-package tile;
+package game.tile;
 
 import core.Panel;
-import entity.Player;
+import game.entity.Player;
 import io.IOUtils;
 
 import java.awt.*;

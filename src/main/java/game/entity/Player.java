@@ -1,4 +1,4 @@
-package entity;
+package game.entity;
 
 import core.Panel;
 import io.KeyHandler;

@@ -1,10 +1,10 @@
 package game.object;
 
-public class Door extends BaseObject {
-    public Door(int x, int y) {
+public class Chest extends BaseObject {
+    public Chest(int x, int y) {
         this.worldX = x;
         this.worldY = y;
-        this.name = "Door";
-        setImage("door");
+        this.name = "Chest";
+        setImage("chest");
     }
 }

@@ -10,14 +10,20 @@ import java.awt.image.BufferedImage;
 
 public abstract class BaseObject {
     private BufferedImage image;
-    protected String name;
+    private final String name;
     protected boolean collision = false;
-    protected int worldX, worldY;
+    public int worldX, worldY;
     private final Rectangle hitbox;
+    public int hitboxX = 0, hitboxY = 0;
 
-    public BaseObject() {
+
+    public BaseObject(String name) {
+        this.name = name;
         hitbox = new Rectangle(0, 0,
-                16 * GamePanel.getTileSize(), 16 * GamePanel.getTileSize());
+                GamePanel.getTileSize(),
+                GamePanel.getTileSize());
+        setImage(this.name);
+
     }
 
     public void setImage(String path) {
@@ -40,4 +46,15 @@ public abstract class BaseObject {
         }
     }
 
+    public Rectangle getHitbox() {
+        return hitbox;
+    }
+
+    public boolean isCollideable() {
+        return collision;
+    }
+
+    public String getName(){
+        return name;
+    }
 }

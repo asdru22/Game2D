@@ -1,7 +1,8 @@
 package core;
 
 public class PanelSettings {
-    private static final int ORIGINAL_TILE_SIZE = 16,
+    private static final int
+            ORIGINAL_TILE_SIZE = 16,
             SCALE = 3,
             TILE_SIZE = ORIGINAL_TILE_SIZE * SCALE,
             MAX_SCREEN_COL = 16,

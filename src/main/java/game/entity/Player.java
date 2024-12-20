@@ -2,6 +2,7 @@ package game.entity;
 
 import core.GamePanel;
 import core.PanelSettings;
+import game.object.BaseObject;
 import io.KeyHandler;
 
 import java.awt.*;
@@ -13,6 +14,7 @@ public class Player extends Entity {
     private final GamePanel gamePanel;
     private final KeyHandler keyHandler;
     private final int screenX, screenY;
+    private int keys = 0;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         super(23, 21, 4, "player");
@@ -56,8 +58,13 @@ public class Player extends Entity {
 
         this.getAnimations().update();
 
+        // check tile collision
         this.resetCollisions();
         gamePanel.getCollisionChecker().checkTile(this);
+
+        // check object collision
+        BaseObject collidedWith = gamePanel.getCollisionChecker().checkObject(this);
+        objectCollision(collidedWith);
 
         if (this.isNotColliding(Direction.UP) && direction.contains(Direction.UP)) {
             this.worldY -= speed;
@@ -97,4 +104,24 @@ public class Player extends Entity {
     public int getScreenY() {
         return screenY;
     }
+
+    private void objectCollision(BaseObject obj) {
+        if (obj == null) return;
+
+        switch (obj.getName()) {
+            case "key"->{
+                keys++;
+                gamePanel.objs.remove(obj);
+            }
+            case "door"->{
+                if(keys>=1){
+                    gamePanel.objs.remove(obj);
+                    keys--;
+                }
+            }
+        }
+
+    }
+
+
 }

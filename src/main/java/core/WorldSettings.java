@@ -1,7 +1,8 @@
 package core;
 
 public class WorldSettings {
-    private static final int MAX_WORLD_COL = 50,
+    private static final int
+            MAX_WORLD_COL = 50,
             MAX_WORLD_ROW = 50,
             WORLD_WIDTH = PanelSettings.getTileSize() * MAX_WORLD_COL,
             WORLD_HEIGHT = PanelSettings.getTileSize() * MAX_WORLD_ROW;

@@ -2,6 +2,7 @@ package game.entity;
 
 import core.GamePanel;
 import core.PanelSettings;
+import game.object.BaseObject;
 import game.tile.TileManager;
 
 public class CollisionChecker {
@@ -80,5 +81,53 @@ public class CollisionChecker {
             }
         }
     }
+
+    public BaseObject checkObject(Entity entity) {
+        BaseObject[] c = new BaseObject[1];
+
+        for (BaseObject obj : gamePanel.objs) {
+            entity.hitbox.x = entity.worldX + entity.hitbox.x;
+            entity.hitbox.y = entity.worldY + entity.hitbox.y;
+
+            obj.getHitbox().x = obj.worldX + obj.getHitbox().x;
+            obj.getHitbox().y = obj.worldY + obj.getHitbox().y;
+
+            if (entity.direction.contains(Direction.UP)) {
+                entity.hitbox.y -= entity.speed;
+                collidingWithObject(entity, obj, Direction.UP, c);
+            }
+            if (entity.direction.contains(Direction.DOWN)) {
+                entity.hitbox.y += entity.speed;
+                collidingWithObject(entity, obj, Direction.DOWN, c);
+            }
+            if (entity.direction.contains(Direction.LEFT)) {
+                entity.hitbox.x -= entity.speed;
+                collidingWithObject(entity, obj, Direction.LEFT, c);
+            }
+            if (entity.direction.contains(Direction.RIGHT)) {
+                entity.hitbox.x += entity.speed;
+                collidingWithObject(entity, obj, Direction.RIGHT, c);
+            }
+
+            entity.hitbox.x = entity.hitboxX;
+            entity.hitbox.y = entity.hitboxY;
+            obj.getHitbox().x = obj.hitboxX;
+            obj.getHitbox().y = obj.hitboxY;
+        }
+
+        return c[0];
+    }
+
+    private void collidingWithObject(Entity e, BaseObject obj,
+                                     Direction dir, BaseObject[] collidedWith) {
+        if (e.hitbox.intersects(obj.getHitbox())) {
+            collidedWith[0] = obj;
+            if (obj.isCollideable()) {
+                e.collisions.add(dir);
+            }
+        }
+
+    }
+
 }
 

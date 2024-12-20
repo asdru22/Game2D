@@ -1,6 +1,8 @@
 package game.tile;
 
-import core.Panel;
+import core.GamePanel;
+import core.PanelSettings;
+import core.WorldSettings;
 import game.entity.Player;
 import io.IOUtils;
 
@@ -10,11 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TileManager {
-    private final Panel gamePanel;
+    private final GamePanel gamePanel;
     private final Map<Integer, Tile> tiles;
     private final int[][] tileMap;
 
-    public TileManager(Panel gamePanel) {
+    public TileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         tiles = new HashMap<>();
 
@@ -26,15 +28,15 @@ public class TileManager {
         tiles.put(5, TileFactory.SAND);
 
         try {
-            tileMap = IOUtils.readMap("world1", gamePanel.getWorldSettings().getWorldCol(),
-                    gamePanel.getWorldSettings().getWorldRow());
+            tileMap = IOUtils.readMap("world1", WorldSettings.getWorldCol(),
+                    WorldSettings.getWorldRow());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void draw(Graphics2D g2d) {
-        int tileSize = gamePanel.getPanelSettings().getTileSize();
+        final int tileSize = PanelSettings.getTileSize();
         int maxRow = tileMap.length; // Map height
         int maxCol = tileMap[0].length; // Map width
         Player p = gamePanel.getPlayer();

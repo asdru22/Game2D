@@ -1,6 +1,6 @@
 package game.entity;
 
-import core.Panel;
+import core.GamePanel;
 
 import java.awt.*;
 import java.util.EnumSet;
@@ -10,20 +10,22 @@ public abstract class Entity {
     protected int worldX;
     protected int worldY;
     protected int speed;
-    protected Rectangle hitbox;
+    protected final Rectangle hitbox;
+    protected int hitboxX, hitboxY;
     protected final String id;
 
     protected final EnumSet<Direction> direction = EnumSet.noneOf(Direction.class);
     protected final EnumSet<Direction> collisions = EnumSet.noneOf(Direction.class);
 
-    private AnimationHandler animations;
+    private final AnimationHandler animations;
 
     public Entity(int worldX, int worldY, int speed, String id) {
-        this.worldX = worldX * Panel.getTileSize();
-        this.worldY = worldY * Panel.getTileSize();
+        this.worldX = worldX * GamePanel.getTileSize();
+        this.worldY = worldY * GamePanel.getTileSize();
         this.speed = speed;
         this.id = id;
 
+        this.hitbox = new Rectangle();
         resetCollisions();
         direction.add(Direction.DOWN);
 

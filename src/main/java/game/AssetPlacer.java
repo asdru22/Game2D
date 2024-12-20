@@ -1,19 +1,21 @@
 package game;
 
-import core.Panel;
+import core.GamePanel;
+import core.PanelSettings;
+import core.WorldSettings;
 import game.object.Chest;
 import game.object.Door;
 import game.object.Key;
 
 public class AssetPlacer {
-    private final Panel gamePanel;
+    private final GamePanel gamePanel;
 
-    public AssetPlacer(Panel gamePanel) {
+    public AssetPlacer(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
 
     public void setObject() {
-        final int tileSize = gamePanel.getPanelSettings().getTileSize();
+        final int tileSize = PanelSettings.getTileSize();
 
         gamePanel.objs.add(new Key(23 * tileSize, 7 * tileSize));
         gamePanel.objs.add(new Key(23 * tileSize, 40 * tileSize));

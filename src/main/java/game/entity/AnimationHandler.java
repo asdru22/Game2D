@@ -54,11 +54,8 @@ public class AnimationHandler {
         for (int i = 1; i <= size; i++) {
             String path = String.format("entity/%s/%s_%s", entity.getId(), name, i);
             frames.add(IOUtils.loadImage(path));
-
         }
-
         animations.put(key, new Animation(frames));
-
     }
 
     public void update() {

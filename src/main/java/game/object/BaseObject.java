@@ -1,6 +1,7 @@
 package game.object;
 
-import core.Panel;
+import core.GamePanel;
+import core.PanelSettings;
 import game.entity.Player;
 import io.IOUtils;
 
@@ -12,14 +13,20 @@ public abstract class BaseObject {
     protected String name;
     protected boolean collision = false;
     protected int worldX, worldY;
+    private final Rectangle hitbox;
+
+    public BaseObject() {
+        hitbox = new Rectangle(0, 0,
+                16 * GamePanel.getTileSize(), 16 * GamePanel.getTileSize());
+    }
 
     public void setImage(String path) {
         this.image = IOUtils.loadImage(String.format("object/%s", path));
     }
 
-    public void draw(Graphics2D g2d, Panel gamePanel) {
+    public void draw(Graphics2D g2d, GamePanel gamePanel) {
         Player p = gamePanel.getPlayer();
-        int tileSize = gamePanel.getPanelSettings().getTileSize();
+        int tileSize = PanelSettings.getTileSize();
 
         int screenX = worldX - p.getWorldX() + p.getScreenX();
         int screenY = worldY - p.getWorldY() + p.getScreenY();

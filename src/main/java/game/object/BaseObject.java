@@ -3,27 +3,19 @@ package game.object;
 import core.GamePanel;
 import core.PanelSettings;
 import game.entity.Player;
+import game.entity.TileEntity;
 import io.IOUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public abstract class BaseObject {
+public abstract class BaseObject extends TileEntity {
     private BufferedImage image;
-    private final String name;
     protected boolean collision = false;
-    public int worldX, worldY;
-    private final Rectangle hitbox;
-    public int hitboxX = 0, hitboxY = 0;
-
 
     public BaseObject(String name) {
-        this.name = name;
-        hitbox = new Rectangle(0, 0,
-                GamePanel.getTileSize(),
-                GamePanel.getTileSize());
-        setImage(this.name);
-
+        super(name);
+        setImage(name);
     }
 
     public void setImage(String path) {
@@ -46,15 +38,7 @@ public abstract class BaseObject {
         }
     }
 
-    public Rectangle getHitbox() {
-        return hitbox;
-    }
-
     public boolean isCollideable() {
         return collision;
-    }
-
-    public String getName(){
-        return name;
     }
 }

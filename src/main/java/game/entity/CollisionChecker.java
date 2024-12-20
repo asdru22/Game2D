@@ -89,8 +89,8 @@ public class CollisionChecker {
             entity.hitbox.x = entity.worldX + entity.hitbox.x;
             entity.hitbox.y = entity.worldY + entity.hitbox.y;
 
-            obj.getHitbox().x = obj.worldX + obj.getHitbox().x;
-            obj.getHitbox().y = obj.worldY + obj.getHitbox().y;
+            obj.hitbox.x = obj.worldX + obj.hitbox.x;
+            obj.hitbox.y = obj.worldY + obj.hitbox.y;
 
             if (entity.direction.contains(Direction.UP)) {
                 entity.hitbox.y -= entity.speed;
@@ -111,8 +111,8 @@ public class CollisionChecker {
 
             entity.hitbox.x = entity.hitboxX;
             entity.hitbox.y = entity.hitboxY;
-            obj.getHitbox().x = obj.hitboxX;
-            obj.getHitbox().y = obj.hitboxY;
+            obj.hitbox.x = obj.hitboxX;
+            obj.hitbox.y = obj.hitboxY;
         }
 
         return c[0];
@@ -120,7 +120,7 @@ public class CollisionChecker {
 
     private void collidingWithObject(Entity e, BaseObject obj,
                                      Direction dir, BaseObject[] collidedWith) {
-        if (e.hitbox.intersects(obj.getHitbox())) {
+        if (e.hitbox.intersects(obj.hitbox)) {
             collidedWith[0] = obj;
             if (obj.isCollideable()) {
                 e.collisions.add(dir);

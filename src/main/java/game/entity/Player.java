@@ -108,7 +108,7 @@ public class Player extends Entity {
     private void objectCollision(BaseObject obj) {
         if (obj == null) return;
 
-        switch (obj.getName()) {
+        switch (obj.getId()) {
             case "key"->{
                 keys++;
                 gamePanel.objs.remove(obj);

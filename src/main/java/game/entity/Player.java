@@ -4,6 +4,7 @@ import core.CorePanel;
 import core.PanelSettings;
 import game.object.BaseObject;
 import io.KeyHandler;
+import math.Vector2f;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -56,8 +57,6 @@ public class Player extends Entity {
             this.direction.add(Direction.RIGHT);
         }
 
-        this.getAnimations().update();
-
         // check tile collision
         this.resetCollisions();
         CollisionChecker cc = corePanel.getCollisionChecker();
@@ -67,18 +66,27 @@ public class Player extends Entity {
         BaseObject collidedWith = cc.checkObject(this);
         objectCollision(collidedWith);
 
+        Vector2f s = new Vector2f();
+
         if (this.isNotColliding(Direction.UP) && direction.contains(Direction.UP)) {
-            this.worldY -= speed;
+            s.y -= 1;
         }
         if (this.isNotColliding(Direction.DOWN) && direction.contains(Direction.DOWN)) {
-            this.worldY += speed;
+            s.y += 1;
         }
         if (this.isNotColliding(Direction.LEFT) && direction.contains(Direction.LEFT)) {
-            this.worldX -= speed;
+            s.x -= 1;
+        }
+        if (this.isNotColliding(Direction.RIGHT) && direction.contains(Direction.RIGHT)) {
+            s.x += 1;
         }
 
-        if (this.isNotColliding(Direction.RIGHT) && direction.contains(Direction.RIGHT)) {
-            this.worldX += speed;
+        s.normalize();
+        s.multiply(speed);
+        if (s.x != 0 || s.y != 0) {
+            this.getAnimations().update();
+            this.worldX += (int) s.x;
+            this.worldY += (int) s.y;
         }
     }
 
@@ -111,15 +119,15 @@ public class Player extends Entity {
         obj.onCollision(this.corePanel);
     }
 
-    public int getKeys(){
+    public int getKeys() {
         return keys;
     }
 
-    public void increaseKeys(){
+    public void increaseKeys() {
         keys++;
     }
 
-    public void decreaseKeys(){
+    public void decreaseKeys() {
         keys--;
     }
 

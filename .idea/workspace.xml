@@ -5,32 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="sounds and more modular classes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/GameObjects.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/object/Boots.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/object/ObjectPlacer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/Sound.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/SoundType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/coin.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/fanfare.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/music.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/powerup.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/unlock.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/CoreFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/WorldSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/WorldSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/AssetPlacer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/CoreFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/CoreFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/TileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/TileEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/object/BaseObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/BaseObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Boots.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Chest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Door.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/IOUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/IOUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/Sound.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,18 +34,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "asdru22"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;asdru22&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/asdru22/Game2D.git",
-    "accountId": "1e43df47-9cce-462f-a1f1-750fa659de71"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/asdru22/Game2D.git&quot;,
+    &quot;accountId&quot;: &quot;1e43df47-9cce-462f-a1f1-750fa659de71&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -133,7 +122,9 @@
       <workItem from="1734625226475" duration="19434000" />
       <workItem from="1734692833084" duration="74000" />
       <workItem from="1734692915496" duration="25000" />
-      <workItem from="1734725152416" duration="15153000" />
+      <workItem from="1734725152416" duration="15910000" />
+      <workItem from="1734782796317" duration="390000" />
+      <workItem from="1734783198466" duration="4936000" />
     </task>
     <task id="LOCAL-00001" summary="fixed settings class">
       <option name="closed" value="true" />
@@ -159,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734732322235</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="sounds and more modular classes">
+      <option name="closed" value="true" />
+      <created>1734741614271</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1734741614271</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

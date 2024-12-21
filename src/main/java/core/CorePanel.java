@@ -1,6 +1,6 @@
 package core;
 
-
+import game.UI;
 import game.entity.CollisionChecker;
 import game.entity.Player;
 import game.object.BaseObject;
@@ -15,24 +15,31 @@ import java.awt.*;
 
 public class CorePanel extends JPanel implements Runnable {
 
-    private final CollisionChecker collisionChecker;
-    private final TileManager tileManager;
-    private final ObjectPlacer objectPlacer;
-    private final KeyHandler keyHandler;
+    private CollisionChecker collisionChecker;
+    private TileManager tileManager;
+    private ObjectPlacer objectPlacer;
+    private KeyHandler keyHandler;
+    private UI ui;
 
     private final Thread gameThread;
     private final CoreFrame coreFrame;
 
-    private int fps;
+    private GameObjects gameObjects;
 
-    private final GameObjects gameObjects;
+    private boolean gameFinished = false;
 
     public CorePanel(CoreFrame coreFrame) {
         super();
         this.coreFrame = coreFrame;
         this.gameThread = new Thread(this);
 
-        // important order
+        initializeObjects();
+        initializePanel();
+        start();
+    }
+
+    private void initializeObjects(){
+        // IMPORTANT ORDER
         this.keyHandler = new KeyHandler();
 
         this.gameObjects = new GameObjects(this);
@@ -42,15 +49,16 @@ public class CorePanel extends JPanel implements Runnable {
         this.objectPlacer = new ObjectPlacer(this);
         this.objectPlacer.setObject();
 
-        // panel settings
+        this.ui = new UI(this);
+    }
+
+    private void initializePanel(){
         this.setPreferredSize(new Dimension(
                 PanelSettings.getScreenWidth(), PanelSettings.getScreenHeight()));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);  // improves performance
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
-
-        start();
     }
 
     private void start() {
@@ -63,7 +71,7 @@ public class CorePanel extends JPanel implements Runnable {
         double drawInterval = 10e8 / PanelSettings.getTargetFPS(), delta = 0;
         long lastTime = System.nanoTime(), currentTime, timer = 0, timeDelta;
         byte fps = 0;
-        while (gameThread != null) {
+        while (!gameFinished) {
 
             currentTime = System.nanoTime();
             timeDelta = currentTime - lastTime;
@@ -79,7 +87,6 @@ public class CorePanel extends JPanel implements Runnable {
             }
 
             if (timer >= 10e8) {
-                this.fps = fps;
                 coreFrame.setTitle(String.format("%s (%dFPS)", PanelSettings.getName(), fps));
                 fps = 0;
                 timer = 0;
@@ -99,6 +106,8 @@ public class CorePanel extends JPanel implements Runnable {
         tileManager.draw(g2d);
 
         gameObjects.draw(g2d);
+
+        ui.draw(g2d);
 
         g2d.dispose();
     }
@@ -125,5 +134,17 @@ public class CorePanel extends JPanel implements Runnable {
 
     public CollisionChecker getCollisionChecker() {
         return collisionChecker;
+    }
+
+    public UI getGameUI() {
+        return ui;
+    }
+
+    public boolean isGameFinished(){
+        return gameFinished;
+    }
+
+    public void finishGame() {
+        gameFinished = true;
     }
 }

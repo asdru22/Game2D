@@ -41,4 +41,6 @@ public abstract class BaseObject extends TileEntity {
     public boolean isCollideable() {
         return collision;
     }
+
+    public abstract void onCollision(CorePanel corePanel);
 }

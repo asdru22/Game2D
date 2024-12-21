@@ -2,8 +2,6 @@ package game.entity;
 
 import core.CorePanel;
 import core.PanelSettings;
-import io.Sound;
-import io.SoundType;
 import game.object.BaseObject;
 import io.KeyHandler;
 
@@ -110,28 +108,19 @@ public class Player extends Entity {
 
     private void objectCollision(BaseObject obj) {
         if (obj == null) return;
-
-        switch (obj.getId()) {
-            case "key" -> {
-                Sound.play(SoundType.COIN);
-                keys++;
-                corePanel.getGameObjects().getObjects().remove(obj);
-            }
-            case "door" -> {
-                if (keys >= 1) {
-                    Sound.play(SoundType.UNLOCK);
-                    corePanel.getGameObjects().getObjects().remove(obj);
-                    keys--;
-                }
-            }
-            case "boots" -> {
-                Sound.play(SoundType.POWERUP);
-                speed += 2;
-                corePanel.getGameObjects().getObjects().remove(obj);
-            }
-        }
-
+        obj.onCollision(this.corePanel);
     }
 
+    public int getKeys(){
+        return keys;
+    }
+
+    public void increaseKeys(){
+        keys++;
+    }
+
+    public void decreaseKeys(){
+        keys--;
+    }
 
 }

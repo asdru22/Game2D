@@ -11,7 +11,7 @@ public abstract class Entity extends TileEntity {
     private final AnimationHandler animations;
 
     public Entity(int worldX, int worldY, int speed, String id) {
-        super(id,worldX,worldY);
+        super(id, worldX, worldY);
         this.speed = speed;
 
         resetCollisions();
@@ -46,6 +46,10 @@ public abstract class Entity extends TileEntity {
 
     public AnimationHandler getAnimations() {
         return animations;
+    }
+
+    public void addSpeed(int i) {
+        this.speed += i;
     }
 }
 

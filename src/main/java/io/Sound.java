@@ -8,6 +8,8 @@ import java.util.Map;
 public class Sound {
     private static final Map<SoundType, Clip> soundClips = new EnumMap<>(SoundType.class);
 
+    private static boolean on = true;
+
     private static Clip loadClip(SoundType type) throws Exception {
         URL soundUrl = Sound.class.getResource(String.format("/sounds/%s.wav", type.name().toLowerCase()));
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundUrl);
@@ -17,6 +19,7 @@ public class Sound {
     }
 
     public static void play(SoundType type) {
+        if(!on) return;
         try {
             Clip clip = soundClips.computeIfAbsent(type, t -> {
                 try {
@@ -37,6 +40,7 @@ public class Sound {
     }
 
     public static void loop(SoundType type) {
+        if(!on) return;
         try {
             Clip clip = soundClips.computeIfAbsent(type, t -> {
                 try {
@@ -53,6 +57,7 @@ public class Sound {
             e.printStackTrace();
         }
     }
+
 
     public static void stop(SoundType type) {
         Clip clip = soundClips.get(type);
@@ -71,6 +76,13 @@ public class Sound {
                 e.printStackTrace(); // Handle cases where the control isn't supported
             }
         }
+    }
+
+    public static void soundOn(){
+        on = true;
+    }
+    public static void soundOff(){
+        on = false;
     }
 }
 

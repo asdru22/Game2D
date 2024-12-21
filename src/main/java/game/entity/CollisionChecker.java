@@ -1,15 +1,15 @@
 package game.entity;
 
-import core.GamePanel;
+import core.CorePanel;
 import core.PanelSettings;
 import game.object.BaseObject;
 import game.tile.TileManager;
 
 public class CollisionChecker {
-    private final GamePanel gamePanel;
+    private final CorePanel corePanel;
 
-    public CollisionChecker(GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
+    public CollisionChecker(CorePanel corePanel) {
+        this.corePanel = corePanel;
     }
 
     public void checkTile(Entity entity) {
@@ -19,7 +19,7 @@ public class CollisionChecker {
         int entityTop = entity.worldY + entity.hitbox.y;
         int entityBottom = entityTop + entity.hitbox.height;
 
-        TileManager tileManager = gamePanel.getTileManager();
+        TileManager tileManager = corePanel.getTileManager();
 
         // Check UP
         if (entity.direction.contains(Direction.UP)) {
@@ -85,7 +85,7 @@ public class CollisionChecker {
     public BaseObject checkObject(Entity entity) {
         BaseObject[] c = new BaseObject[1];
 
-        for (BaseObject obj : gamePanel.objs) {
+        for (BaseObject obj : corePanel.getGameObjects().getObjects()) {
             entity.hitbox.x = entity.worldX + entity.hitbox.x;
             entity.hitbox.y = entity.worldY + entity.hitbox.y;
 

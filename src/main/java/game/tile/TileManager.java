@@ -1,6 +1,6 @@
 package game.tile;
 
-import core.GamePanel;
+import core.CorePanel;
 import core.PanelSettings;
 import core.WorldSettings;
 import game.entity.Player;
@@ -12,12 +12,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TileManager {
-    private final GamePanel gamePanel;
+    private final CorePanel corePanel;
     private final Map<Integer, Tile> tiles;
     private final int[][] tileMap;
 
-    public TileManager(GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
+    public TileManager(CorePanel corePanel) {
+        this.corePanel = corePanel;
         tiles = new HashMap<>();
 
         tiles.put(0, TileFactory.GRASS);
@@ -39,7 +39,7 @@ public class TileManager {
         final int tileSize = PanelSettings.getTileSize();
         int maxRow = tileMap.length; // Map height
         int maxCol = tileMap[0].length; // Map width
-        Player p = gamePanel.getPlayer();
+        Player p = corePanel.getPlayer();
 
         for (int worldCol = 0; worldCol < maxCol; worldCol++) {
             for (int worldRow = 0; worldRow < maxRow; worldRow++) {

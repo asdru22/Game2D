@@ -1,7 +1,5 @@
 package game.entity;
 
-import core.GamePanel;
-
 import java.util.EnumSet;
 
 public abstract class Entity extends TileEntity {
@@ -13,9 +11,7 @@ public abstract class Entity extends TileEntity {
     private final AnimationHandler animations;
 
     public Entity(int worldX, int worldY, int speed, String id) {
-        super(id);
-        this.worldX = worldX * GamePanel.getTileSize();
-        this.worldY = worldY * GamePanel.getTileSize();
+        super(id,worldX,worldY);
         this.speed = speed;
 
         resetCollisions();

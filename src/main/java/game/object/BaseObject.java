@@ -1,6 +1,6 @@
 package game.object;
 
-import core.GamePanel;
+import core.CorePanel;
 import core.PanelSettings;
 import game.entity.Player;
 import game.entity.TileEntity;
@@ -13,8 +13,8 @@ public abstract class BaseObject extends TileEntity {
     private BufferedImage image;
     protected boolean collision = false;
 
-    public BaseObject(String name) {
-        super(name);
+    public BaseObject(String name, int x, int y) {
+        super(name, x, y);
         setImage(name);
     }
 
@@ -22,8 +22,8 @@ public abstract class BaseObject extends TileEntity {
         this.image = IOUtils.loadImage(String.format("object/%s", path));
     }
 
-    public void draw(Graphics2D g2d, GamePanel gamePanel) {
-        Player p = gamePanel.getPlayer();
+    public void draw(Graphics2D g2d, CorePanel corePanel) {
+        Player p = corePanel.getPlayer();
         int tileSize = PanelSettings.getTileSize();
 
         int screenX = worldX - p.getWorldX() + p.getScreenX();

@@ -1,7 +1,9 @@
 package game.entity;
 
-import core.GamePanel;
+import core.CorePanel;
 import core.PanelSettings;
+import io.Sound;
+import io.SoundType;
 import game.object.BaseObject;
 import io.KeyHandler;
 
@@ -11,14 +13,14 @@ import java.awt.image.BufferedImage;
 
 public class Player extends Entity {
 
-    private final GamePanel gamePanel;
+    private final CorePanel corePanel;
     private final KeyHandler keyHandler;
     private final int screenX, screenY;
     private int keys = 0;
 
-    public Player(GamePanel gamePanel, KeyHandler keyHandler) {
+    public Player(CorePanel corePanel, KeyHandler keyHandler) {
         super(23, 21, 4, "player");
-        this.gamePanel = gamePanel;
+        this.corePanel = corePanel;
         this.keyHandler = keyHandler;
 
         int tileSize = PanelSettings.getTileSize();
@@ -60,10 +62,11 @@ public class Player extends Entity {
 
         // check tile collision
         this.resetCollisions();
-        gamePanel.getCollisionChecker().checkTile(this);
+        CollisionChecker cc = corePanel.getCollisionChecker();
+        cc.checkTile(this);
 
         // check object collision
-        BaseObject collidedWith = gamePanel.getCollisionChecker().checkObject(this);
+        BaseObject collidedWith = cc.checkObject(this);
         objectCollision(collidedWith);
 
         if (this.isNotColliding(Direction.UP) && direction.contains(Direction.UP)) {
@@ -109,15 +112,22 @@ public class Player extends Entity {
         if (obj == null) return;
 
         switch (obj.getId()) {
-            case "key"->{
+            case "key" -> {
+                Sound.play(SoundType.COIN);
                 keys++;
-                gamePanel.objs.remove(obj);
+                corePanel.getGameObjects().getObjects().remove(obj);
             }
-            case "door"->{
-                if(keys>=1){
-                    gamePanel.objs.remove(obj);
+            case "door" -> {
+                if (keys >= 1) {
+                    Sound.play(SoundType.UNLOCK);
+                    corePanel.getGameObjects().getObjects().remove(obj);
                     keys--;
                 }
+            }
+            case "boots" -> {
+                Sound.play(SoundType.POWERUP);
+                speed += 2;
+                corePanel.getGameObjects().getObjects().remove(obj);
             }
         }
 

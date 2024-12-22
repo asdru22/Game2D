@@ -20,12 +20,39 @@ public class TileManager {
         this.corePanel = corePanel;
         tiles = new HashMap<>();
 
-        tiles.put(0, TileFactory.GRASS);
-        tiles.put(1, TileFactory.WALL);
-        tiles.put(2, TileFactory.WATER);
-        tiles.put(3, TileFactory.EARTH);
-        tiles.put(4, TileFactory.TREE);
-        tiles.put(5, TileFactory.SAND);
+        tiles.put(10, new Tile("grass00", false));
+        tiles.put(11, new Tile("grass01", false));
+        tiles.put(12, new Tile("water00", true));
+        tiles.put(13, new Tile("water01", true));
+        tiles.put(14, new Tile("water02", true));
+        tiles.put(15, new Tile("water03", true));
+        tiles.put(16, new Tile("water04", true));
+        tiles.put(17, new Tile("water05", true));
+        tiles.put(18, new Tile("water06", true));
+        tiles.put(19, new Tile("water07", true));
+        tiles.put(20, new Tile("water08", true));
+        tiles.put(21, new Tile("water09", true));
+        tiles.put(22, new Tile("water10", true));
+        tiles.put(23, new Tile("water11", true));
+        tiles.put(24, new Tile("water12", true));
+        tiles.put(25, new Tile("water13", true));
+        tiles.put(26, new Tile("road00", false));
+        tiles.put(27, new Tile("road01", false));
+        tiles.put(28, new Tile("road02", false));
+        tiles.put(29, new Tile("road03", false));
+        tiles.put(30, new Tile("road04", false));
+        tiles.put(31, new Tile("road05", false));
+        tiles.put(32, new Tile("road06", false));
+        tiles.put(33, new Tile("road07", false));
+        tiles.put(34, new Tile("road08", false));
+        tiles.put(35, new Tile("road09", false));
+        tiles.put(36, new Tile("road10", false));
+        tiles.put(37, new Tile("road11", false));
+        tiles.put(38, new Tile("road12", false));
+        tiles.put(39, new Tile("earth", false));
+        tiles.put(40, new Tile("wall", false));
+        tiles.put(41, new Tile("tree", true));
+
 
         try {
             tileMap = IOUtils.readMap("world1", WorldSettings.getWorldCol(),
@@ -65,7 +92,7 @@ public class TileManager {
         return tileMap[x][y];
     }
 
-    public Map<Integer, Tile> getTiles(){
+    public Map<Integer, Tile> getTiles() {
         return tiles;
     }
 }

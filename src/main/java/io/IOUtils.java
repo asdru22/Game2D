@@ -40,13 +40,12 @@ public class IOUtils {
             int col = 0;
 
             while ((line = reader.readLine()) != null && col < maxCol) {
-                // Ensure line length matches maxCol by trimming or padding with zeros
-                line = line.length() > maxRow ? line.substring(0, maxRow) :
-                        String.format("%-" + maxRow + "s", line).replace(' ', '0');
+
+                String[] numberStrings = line.trim().split("\\s+");
 
                 // Parse each character in the line as a row
                 for (int row = 0; row < maxRow; row++) {
-                    r[row][col] = Character.getNumericValue(line.charAt(row));
+                    r[row][col] = Integer.parseInt(numberStrings[row]);
                 }
                 col++;
             }

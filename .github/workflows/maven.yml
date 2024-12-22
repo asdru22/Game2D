@@ -29,3 +29,9 @@ jobs:
         with:
           name: Runnable Jar
           path: staging
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/master') }}
+        with:
+          body: This is your body here
+          files: staging/*.jar

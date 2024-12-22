@@ -43,4 +43,3 @@ jobs:
           asset_path: staging/*.jar
           asset_name: application.jar  # Rename as necessary
           asset_content_type: application/java-archive
-

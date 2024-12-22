@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="maven build attempt">
-      <change afterPath="$PROJECT_DIR$/src/main/java/math/Vector2f.java" afterDir="false" />
+    <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="improved diagonal movement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,8 +95,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.24807.4" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.24807.4" />
       </set>
     </attachedChunks>
   </component>
@@ -115,7 +113,8 @@
       <workItem from="1734692915496" duration="25000" />
       <workItem from="1734725152416" duration="15910000" />
       <workItem from="1734782796317" duration="390000" />
-      <workItem from="1734783198466" duration="8003000" />
+      <workItem from="1734783198466" duration="8554000" />
+      <workItem from="1734801523493" duration="1594000" />
     </task>
     <task id="LOCAL-00001" summary="fixed settings class">
       <option name="closed" value="true" />
@@ -165,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734789970284</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="improved diagonal movement">
+      <option name="closed" value="true" />
+      <created>1734801047418</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1734801047418</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +185,7 @@
     <MESSAGE value="sounds and more modular classes" />
     <MESSAGE value="ui and better item collision" />
     <MESSAGE value="maven build attempt" />
-    <option name="LAST_COMMIT_MESSAGE" value="maven build attempt" />
+    <MESSAGE value="improved diagonal movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved diagonal movement" />
   </component>
 </project>

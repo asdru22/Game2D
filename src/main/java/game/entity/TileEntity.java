@@ -9,7 +9,7 @@ public class TileEntity {
     public final Rectangle hitbox;
     public int hitboxX = 0, hitboxY = 0;
     private final String id;
-    private final int TILE_SIZE = PanelSettings.getTileSize();
+    protected final int TILE_SIZE = PanelSettings.getTileSize();
 
     public TileEntity(String id, int x, int y) {
         this.id = id;

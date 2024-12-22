@@ -17,6 +17,5 @@ public class Boots extends BaseObject {
         player.addSpeed(2);
         corePanel.getGameObjects().getObjects().remove(this);
         corePanel.getGameUI().showMessage("Speed up");
-
     }
 }

@@ -1,6 +1,9 @@
 package io;
 
+import core.PanelSettings;
+
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,6 +12,7 @@ import java.io.InputStreamReader;
 import java.util.Objects;
 
 public class IOUtils {
+
     public static BufferedImage loadImage(String path) {
         try {
             return ImageIO.read(Objects.requireNonNull(IOUtils.class.getClassLoader().
@@ -48,6 +52,25 @@ public class IOUtils {
             }
         }
         return r;
+    }
+
+    public static BufferedImage scaleImage(BufferedImage image, int newWidth, int newHeight) {
+        BufferedImage newImage = new BufferedImage(newWidth, newHeight, image.getType());
+        Graphics2D g = newImage.createGraphics();
+        g.drawImage(image, 0, 0, newWidth, newHeight, null);
+        g.dispose();
+        return newImage;
+    }
+
+    public static BufferedImage loadScaledImage(String path) {
+        final int tileSize = PanelSettings.getTileSize();
+        try {
+            BufferedImage img = ImageIO.read(Objects.requireNonNull(IOUtils.class.getClassLoader().
+                    getResourceAsStream(String.format("textures/%s.png", path))));
+            return scaleImage(img, tileSize, tileSize);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

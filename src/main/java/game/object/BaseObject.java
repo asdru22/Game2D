@@ -10,16 +10,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class BaseObject extends TileEntity {
-    private BufferedImage image;
+    private final BufferedImage image;
     protected boolean collision = false;
 
     public BaseObject(String name, int x, int y) {
         super(name, x, y);
-        setImage(name);
-    }
-
-    public void setImage(String path) {
-        this.image = IOUtils.loadImage(String.format("object/%s", path));
+        this.image = IOUtils.loadScaledImage(String.format("object/%s", name));
     }
 
     public void draw(Graphics2D g2d, CorePanel corePanel) {

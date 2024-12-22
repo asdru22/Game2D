@@ -1,7 +1,5 @@
 package core;
 
-import io.Sound;
-
 import javax.swing.JFrame;
 
 public class CoreFrame extends JFrame {

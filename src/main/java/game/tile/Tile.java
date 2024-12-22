@@ -9,7 +9,7 @@ public class Tile {
     private final boolean collision;
 
     public Tile(String texturePath, boolean collision) {
-        this.image = IOUtils.loadImage(String.format("tile/%s",texturePath));
+        this.image = IOUtils.loadScaledImage(String.format("tile/%s", texturePath));
         this.collision = collision;
     }
 

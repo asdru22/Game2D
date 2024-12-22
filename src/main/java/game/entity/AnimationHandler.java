@@ -1,5 +1,6 @@
 package game.entity;
 
+import core.PanelSettings;
 import io.IOUtils;
 
 import java.awt.image.BufferedImage;
@@ -53,7 +54,7 @@ public class AnimationHandler {
         ArrayList<BufferedImage> frames = new ArrayList<>();
         for (int i = 1; i <= size; i++) {
             String path = String.format("entity/%s/%s_%s", entity.getId(), name, i);
-            frames.add(IOUtils.loadImage(path));
+            frames.add(IOUtils.loadScaledImage(path));
         }
         animations.put(key, new Animation(frames));
     }

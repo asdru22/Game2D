@@ -29,3 +29,4 @@ jobs:
         with:
           name: Runnable Jar
           path: staging
+      - uses: softprops/action-gh-release@v2

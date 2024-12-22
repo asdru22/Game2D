@@ -1,11 +1,3 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Java CI with Maven
 
 on:
@@ -24,13 +16,30 @@ jobs:
           java-version: '22'
           distribution: 'oracle'
       - run: mvn --batch-mode --update-snapshots verify
-      - run: mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Runnable Jar
-          path: staging
 
-      - uses: actions/upload-artifact@v3
+      # Debugging step: Check if the artifact is created
+      - run: mkdir staging && cp target/*.jar staging
+      - run: ls -al staging
+
+      # Create a release
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: Build
-          path: staging
+          tag_name: "v1.0.0"  # Change the tag as appropriate
+          release_name: "Release v1.0.0"  # Customize the release name
+          draft: false
+          prerelease: false
+
+      # Upload artifact to release
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: staging/*.jar
+          asset_name: application.jar  # Rename as necessary
+          asset_content_type: application/java-archive

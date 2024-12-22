@@ -21,18 +21,3 @@ jobs:
         with:
           name: Runnable Jar
           path: staging
-
-      # Step to create a tag
-      - name: Create Git Tag
-        run: |
-          TAG_NAME="v1.0.0" # Update this version as needed
-          git tag $TAG_NAME
-          git push origin $TAG_NAME
-
-      # Create the release
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/master') }}
-        with:
-          body: This is your body here
-          files: staging/*.jar

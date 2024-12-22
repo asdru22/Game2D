@@ -32,14 +32,3 @@ jobs:
           release_name: "Release v1.0.0"  # Customize the release name
           draft: false
           prerelease: false
-
-      # Upload artifact to release
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: staging/*.jar
-          asset_name: application.jar  # Rename as necessary
-          asset_content_type: application/java-archive

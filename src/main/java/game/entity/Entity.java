@@ -2,14 +2,13 @@ package game.entity;
 
 import core.CorePanel;
 import core.PanelSettings;
-import game.object.BaseObject;
 import math.Vector2f;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.EnumSet;
 
-public abstract class Entity extends TileEntity {
+public abstract class Entity extends TileEntity implements Drawable {
     protected int speed;
 
     protected final EnumSet<Direction> direction = EnumSet.noneOf(Direction.class);
@@ -66,6 +65,7 @@ public abstract class Entity extends TileEntity {
         return corePanel;
     }
 
+    @Override
     public void draw(Graphics2D g2d) {
         Player p = corePanel.getPlayer();
         final int tileSize = PanelSettings.getTileSize();
@@ -91,7 +91,7 @@ public abstract class Entity extends TileEntity {
         this.resetCollisions();
         CollisionChecker cc = this.getCorePanel().getCollisionChecker();
         cc.checkTile(this);
-        cc.checkEntity(this,this.getCorePanel().getGameObjects().getEntities());
+        cc.checkEntity(this, this.getCorePanel().getGameObjects().getEntities());
         cc.checkObject(this);
 
         Vector2f s = new Vector2f();
@@ -130,7 +130,8 @@ public abstract class Entity extends TileEntity {
             this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingRight);
     }
 
-    public void onCollision(){}
+    public void onCollision() {
+    }
 }
 
 

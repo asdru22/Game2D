@@ -2,9 +2,7 @@ package game.entity;
 
 import core.CorePanel;
 import core.PanelSettings;
-import game.object.BaseObject;
 import io.KeyHandler;
-import math.Vector2f;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

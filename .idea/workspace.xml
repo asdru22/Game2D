@@ -4,31 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="new tileset">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/GameState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/entity/Behaviour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/entity/NPC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/entity/npc/OldMan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/up_2.png" afterDir="false" />
+    <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="npcs">
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/entity/Drawable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/GameObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/GameObjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/AnimationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/AnimationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/NPC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Chest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Door.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/ObjectPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/ObjectPlacer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -146,7 +128,9 @@
       <workItem from="1734865665928" duration="4286000" />
       <workItem from="1734905282251" duration="134000" />
       <workItem from="1734905589130" duration="154000" />
-      <workItem from="1734905754455" duration="11732000" />
+      <workItem from="1734905754455" duration="12156000" />
+      <workItem from="1734918203160" duration="336000" />
+      <workItem from="1734946810196" duration="1479000" />
     </task>
     <task id="LOCAL-00001" summary="fixed settings class">
       <option name="closed" value="true" />
@@ -300,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734909094218</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="npcs">
+      <option name="closed" value="true" />
+      <created>1734918053864</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1734918053864</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,6 +309,7 @@
     <MESSAGE value="release artifact test" />
     <MESSAGE value="optimized drawing" />
     <MESSAGE value="new tileset" />
-    <option name="LAST_COMMIT_MESSAGE" value="new tileset" />
+    <MESSAGE value="npcs" />
+    <option name="LAST_COMMIT_MESSAGE" value="npcs" />
   </component>
 </project>

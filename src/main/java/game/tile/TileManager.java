@@ -3,6 +3,7 @@ package game.tile;
 import core.CorePanel;
 import core.PanelSettings;
 import core.WorldSettings;
+import game.entity.Drawable;
 import game.entity.Player;
 import io.IOUtils;
 
@@ -11,7 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TileManager {
+public class TileManager implements Drawable {
     private final CorePanel corePanel;
     private final Map<Integer, Tile> tiles;
     private final int[][] tileMap;
@@ -62,6 +63,7 @@ public class TileManager {
         }
     }
 
+    @Override
     public void draw(Graphics2D g2d) {
         final int tileSize = PanelSettings.getTileSize();
         int maxRow = tileMap.length; // Map height

@@ -4,7 +4,7 @@ import core.CorePanel;
 
 public abstract class NPC extends Entity {
 
-    private int actionCooldown = 0, actionInterval;
+    private int actionCooldown = 0, actionInterval = 60;
 
 
     public NPC(int worldX, int worldY, int speed, String id, CorePanel corePanel) {

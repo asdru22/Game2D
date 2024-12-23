@@ -1,6 +1,5 @@
 package game.entity;
 
-import core.PanelSettings;
 import io.IOUtils;
 
 import java.awt.image.BufferedImage;
@@ -9,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AnimationHandler {
+
     public enum Animations {
         WalkingUp, WalkingDown, WalkingLeft, WalkingRight
     }
@@ -65,6 +65,10 @@ public class AnimationHandler {
             frameCounter = 0;
             this.currentAnimation.update();
         }
+    }
+
+    public void initialize() {
+        this.currentAnimation = animations.get(Animations.WalkingDown);
     }
 
 }

@@ -12,6 +12,7 @@ import io.SoundType;
 
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class CorePanel extends JPanel implements Runnable {
 
@@ -24,9 +25,9 @@ public class CorePanel extends JPanel implements Runnable {
     private final Thread gameThread;
     private final CoreFrame coreFrame;
 
+    private GameState gameState;
+    private int pauseDelay = 0;
     private GameObjects gameObjects;
-
-    private boolean gameFinished = false;
 
     public CorePanel(CoreFrame coreFrame) {
         super();
@@ -38,7 +39,8 @@ public class CorePanel extends JPanel implements Runnable {
         start();
     }
 
-    private void initializeObjects(){
+    private void initializeObjects() {
+        this.gameState = GameState.PLAYING;
         // IMPORTANT ORDER
         this.keyHandler = new KeyHandler();
 
@@ -47,12 +49,11 @@ public class CorePanel extends JPanel implements Runnable {
         this.collisionChecker = new CollisionChecker(this);
         this.tileManager = new TileManager(this);
         this.objectPlacer = new ObjectPlacer(this);
-        this.objectPlacer.setObject();
 
         this.ui = new UI(this);
     }
 
-    private void initializePanel(){
+    private void initializePanel() {
         this.setPreferredSize(new Dimension(
                 PanelSettings.getScreenWidth(), PanelSettings.getScreenHeight()));
         this.setBackground(Color.BLACK);
@@ -71,7 +72,7 @@ public class CorePanel extends JPanel implements Runnable {
         double drawInterval = 10e8 / PanelSettings.getTargetFPS(), delta = 0;
         long lastTime = System.nanoTime(), currentTime, timer = 0, timeDelta;
         byte fps = 0;
-        while (!gameFinished) {
+        while (gameState != GameState.FINISHED) {
 
             currentTime = System.nanoTime();
             timeDelta = currentTime - lastTime;
@@ -95,7 +96,31 @@ public class CorePanel extends JPanel implements Runnable {
     }
 
     private void update() {
+
+        if(pauseDelay>0) pauseDelay--;
+
+        switch (gameState) {
+            case PLAYING -> playing();
+            case PAUSED -> paused();
+        }
+    }
+
+    private void playing() {
+        if (keyHandler.isKeyPressed(KeyEvent.VK_ESCAPE) && pauseDelay == 0) {
+            gameState = GameState.PAUSED;
+            pauseDelay = 30;
+            return;
+        }
         gameObjects.update();
+    }
+
+    private void paused() {
+        if (keyHandler.isKeyPressed(KeyEvent.VK_ESCAPE) && pauseDelay == 0) {
+            gameState = GameState.PLAYING;
+            pauseDelay = 30;
+            return;
+        }
+        // paused stuff
     }
 
     @Override
@@ -116,13 +141,10 @@ public class CorePanel extends JPanel implements Runnable {
         return gameObjects.getPlayer();
     }
 
-    public GameObjects getGameObjects(){
+    public GameObjects getGameObjects() {
         return gameObjects;
     }
 
-    public void addGameObject(BaseObject object) {
-        gameObjects.addGameObject(object);
-    }
 
     public TileManager getTileManager() {
         return tileManager;
@@ -140,11 +162,11 @@ public class CorePanel extends JPanel implements Runnable {
         return ui;
     }
 
-    public boolean isGameFinished(){
-        return gameFinished;
+    public GameState getGameState() {
+        return gameState;
     }
 
-    public void finishGame() {
-        gameFinished = true;
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 }

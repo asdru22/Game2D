@@ -4,49 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="optimized drawing">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/floor01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/grass00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/grass01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/hut.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/road12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/table01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water13.png" afterDir="false" />
+    <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="new tileset">
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/GameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/entity/Behaviour.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/entity/NPC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/entity/npc/OldMan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/entity/old_man/walking/up_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/tile/TileFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/IOUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/IOUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/world1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maps/world1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/tile/earth.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/earth.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/tile/grass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/tile/sand.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/water10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/tile/tree.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/tree.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/tile/wall.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textures/tile/wall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/tile/water.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/GameObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/GameObjects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/AnimationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/AnimationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Chest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/ObjectPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/ObjectPlacer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +39,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -113,6 +96,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ale\Documents\java projects\Game2D\src\main\resources\textures\entity\old_man\walking" />
+      <recent name="C:\Users\Ale\Documents\java projects\Game2D\src\main\resources\textures\entity\old_man" />
+      <recent name="C:\Users\Ale\Documents\java projects\Game2D\src\main\resources\textures\entity\" />
       <recent name="C:\Users\Ale\Documents\java projects\Game2D\src\main\resources\textures\tile" />
       <recent name="C:\Users\Ale\Documents\java projects\Game2D\src\main\resources\sounds" />
     </key>
@@ -160,7 +146,7 @@
       <workItem from="1734865665928" duration="4286000" />
       <workItem from="1734905282251" duration="134000" />
       <workItem from="1734905589130" duration="154000" />
-      <workItem from="1734905754455" duration="3088000" />
+      <workItem from="1734905754455" duration="11732000" />
     </task>
     <task id="LOCAL-00001" summary="fixed settings class">
       <option name="closed" value="true" />
@@ -306,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734906692029</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="new tileset">
+      <option name="closed" value="true" />
+      <created>1734909094218</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1734909094218</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,6 +316,7 @@
     <MESSAGE value="improved diagonal movement" />
     <MESSAGE value="release artifact test" />
     <MESSAGE value="optimized drawing" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimized drawing" />
+    <MESSAGE value="new tileset" />
+    <option name="LAST_COMMIT_MESSAGE" value="new tileset" />
   </component>
 </project>

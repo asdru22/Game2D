@@ -14,7 +14,6 @@ public class Key extends BaseObject {
     public void onCollision(CorePanel corePanel) {
         Sound.play(SoundType.COIN);
         Player p = corePanel.getGameObjects().getPlayer();
-        p.increaseKeys();
         corePanel.getGameObjects().getObjects().remove(this);
 
         corePanel.getGameUI().showMessage("You got a key!");

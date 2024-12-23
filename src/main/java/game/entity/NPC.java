@@ -1,0 +1,32 @@
+package game.entity;
+
+import core.CorePanel;
+
+public abstract class NPC extends Entity {
+
+    private int actionCooldown = 0, actionInterval;
+
+
+    public NPC(int worldX, int worldY, int speed, String id, CorePanel corePanel) {
+        super(worldX, worldY, speed, id, corePanel);
+    }
+
+    @Override
+    public void update() {
+        move();
+
+        if (actionCooldown > 0) {
+            actionCooldown--;
+        } else if (actionCooldown == 0) {
+            loop();
+            actionCooldown = actionInterval;
+        }
+
+    }
+
+    public abstract void loop();
+
+    public void setActionInterval(int actionInterval) {
+        this.actionInterval = actionInterval;
+    }
+}

@@ -1,27 +1,24 @@
 package game.object;
 
 import core.CorePanel;
+import game.entity.Entity;
+import game.entity.npc.OldMan;
 
 public class ObjectPlacer {
     private final CorePanel corePanel;
 
     public ObjectPlacer(CorePanel corePanel) {
         this.corePanel = corePanel;
+
+        this.addNPC(new OldMan(21, 21, corePanel));
     }
 
-    public void setObject() {
 
-        corePanel.addGameObject(new Key(23, 7));
-        corePanel.addGameObject(new Key(23, 40));
-        corePanel.addGameObject(new Key(37, 7));
+    private void addNPC(Entity entity) {
+        corePanel.getGameObjects().addEntity(entity);
+    }
 
-        corePanel.addGameObject(new Door(10, 11));
-        corePanel.addGameObject(new Door(8, 28));
-        corePanel.addGameObject(new Door(12, 22));
-
-        corePanel.addGameObject(new Chest(10, 7));
-
-        corePanel.addGameObject(new Boots(37, 42));
-
+    private void addObject(BaseObject object) {
+        corePanel.getGameObjects().addObject(object);
     }
 }

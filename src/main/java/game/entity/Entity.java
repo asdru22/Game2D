@@ -129,9 +129,6 @@ public abstract class Entity extends TileEntity implements Drawable {
         if (direction.contains(Direction.RIGHT))
             this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingRight);
     }
-
-    public void onCollision() {
-    }
 }
 
 

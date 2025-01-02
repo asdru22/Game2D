@@ -129,36 +129,38 @@ public class CollisionChecker {
         }
     }
 
-    public void checkEntity(Entity entity, ArrayList<Entity> target){
+    public void checkEntity(Entity source, ArrayList<Entity> target){
         Entity[] e = new Entity[1];
 
+        // t = entity that isnt source
+
         for (Entity t : target) {
-            if(!t.equals(entity)){
-                entity.hitbox.x = entity.worldX + entity.hitbox.x;
-                entity.hitbox.y = entity.worldY + entity.hitbox.y;
+            if(!t.equals(source)){
+                source.hitbox.x = source.worldX + source.hitbox.x;
+                source.hitbox.y = source.worldY + source.hitbox.y;
 
                 t.hitbox.x = t.worldX + t.hitbox.x;
                 t.hitbox.y = t.worldY + t.hitbox.y;
 
-                if (entity.direction.contains(Direction.UP)) {
-                    entity.hitbox.y -= entity.speed;
-                    collidingWithEntity(entity, t, Direction.UP, e);
+                if (source.direction.contains(Direction.UP)) {
+                    source.hitbox.y -= source.speed;
+                    collidingWithEntity(source, t, Direction.UP, e);
                 }
-                if (entity.direction.contains(Direction.DOWN)) {
-                    entity.hitbox.y += entity.speed;
-                    collidingWithEntity(entity, t, Direction.DOWN, e);
+                if (source.direction.contains(Direction.DOWN)) {
+                    source.hitbox.y += source.speed;
+                    collidingWithEntity(source, t, Direction.DOWN, e);
                 }
-                if (entity.direction.contains(Direction.LEFT)) {
-                    entity.hitbox.x -= entity.speed;
-                    collidingWithEntity(entity, t, Direction.LEFT, e);
+                if (source.direction.contains(Direction.LEFT)) {
+                    source.hitbox.x -= source.speed;
+                    collidingWithEntity(source, t, Direction.LEFT, e);
                 }
-                if (entity.direction.contains(Direction.RIGHT)) {
-                    entity.hitbox.x += entity.speed;
-                    collidingWithEntity(entity, t, Direction.RIGHT, e);
+                if (source.direction.contains(Direction.RIGHT)) {
+                    source.hitbox.x += source.speed;
+                    collidingWithEntity(source, t, Direction.RIGHT, e);
                 }
 
-                entity.hitbox.x = entity.hitboxX;
-                entity.hitbox.y = entity.hitboxY;
+                source.hitbox.x = source.hitboxX;
+                source.hitbox.y = source.hitboxY;
                 t.hitbox.x = t.hitboxX;
                 t.hitbox.y = t.hitboxY;
             }
@@ -166,12 +168,14 @@ public class CollisionChecker {
 
     }
 
-    private void collidingWithEntity(Entity e, Entity t,
+    private void collidingWithEntity(Entity source, Entity target,
                                      Direction dir, Entity[] collidedWith) {
-        if (e.hitbox.intersects(t.hitbox)) {
-            collidedWith[0] = t;
-            e.onCollision();
-            e.collisions.add(dir);
+        if (source.hitbox.intersects(target.hitbox)) {
+            collidedWith[0] = target;
+            if(target instanceof Collidable){
+                ((Collidable) target).onCollision(source);
+            }
+            source.collisions.add(dir);
         }
     }
 

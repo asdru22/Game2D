@@ -1,4 +1,4 @@
-package game;
+package ui;
 
 import core.CorePanel;
 import core.PanelSettings;
@@ -13,15 +13,10 @@ public class UI {
     private String message;
     private int messageCounter = 0;
 
-    private final int
-            SCREEN_X = 74,
-            SCREEN_Y = 65;
-
     public UI(CorePanel corePanel) {
         this.corePanel = corePanel;
         this.ARIAL_40 = new Font("Arial", Font.PLAIN, 40);
         this.ARIAL_60 = new Font("Arial", Font.BOLD, 60);
-
     }
 
     public void showMessage(String text) {
@@ -63,4 +58,5 @@ public class UI {
         g2d.drawString(text, x, y);
 
     }
+
 }

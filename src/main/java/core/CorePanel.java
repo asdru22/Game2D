@@ -1,9 +1,9 @@
 package core;
 
-import game.UI;
+import ui.DialogueBox;
+import ui.UI;
 import game.entity.CollisionChecker;
 import game.entity.Player;
-import game.object.BaseObject;
 import game.object.ObjectPlacer;
 import game.tile.TileManager;
 import io.KeyHandler;
@@ -21,12 +21,13 @@ public class CorePanel extends JPanel implements Runnable {
     private ObjectPlacer objectPlacer;
     private KeyHandler keyHandler;
     private UI ui;
+    private DialogueBox dialogueBox;
 
     private final Thread gameThread;
     private final CoreFrame coreFrame;
 
     private GameState gameState;
-    private int pauseDelay = 0;
+    private int inputDelay = 0;
     private GameObjects gameObjects;
 
     public CorePanel(CoreFrame coreFrame) {
@@ -51,6 +52,7 @@ public class CorePanel extends JPanel implements Runnable {
         this.objectPlacer = new ObjectPlacer(this);
 
         this.ui = new UI(this);
+        this.dialogueBox = new DialogueBox(this);
     }
 
     private void initializePanel() {
@@ -97,27 +99,36 @@ public class CorePanel extends JPanel implements Runnable {
 
     private void update() {
 
-        if(pauseDelay>0) pauseDelay--;
+        if (inputDelay > 0) inputDelay--;
 
         switch (gameState) {
             case PLAYING -> playing();
             case PAUSED -> paused();
+            case DIALOGUE -> dialogue();
         }
     }
 
+    private void dialogue() {
+        if (keyHandler.isKeyPressed(KeyEvent.VK_ENTER) && inputDelay == 0) {
+            inputDelay = 30;
+            dialogueBox.nextMessage();
+        }
+    }
+
+
     private void playing() {
-        if (keyHandler.isKeyPressed(KeyEvent.VK_ESCAPE) && pauseDelay == 0) {
+        if (keyHandler.isKeyPressed(KeyEvent.VK_ESCAPE) && inputDelay == 0) {
             gameState = GameState.PAUSED;
-            pauseDelay = 30;
+            inputDelay = 30;
             return;
         }
         gameObjects.update();
     }
 
     private void paused() {
-        if (keyHandler.isKeyPressed(KeyEvent.VK_ESCAPE) && pauseDelay == 0) {
+        if (keyHandler.isKeyPressed(KeyEvent.VK_ESCAPE) && inputDelay == 0) {
             gameState = GameState.PLAYING;
-            pauseDelay = 30;
+            inputDelay = 30;
             return;
         }
         // paused stuff
@@ -133,6 +144,10 @@ public class CorePanel extends JPanel implements Runnable {
         gameObjects.draw(g2d);
 
         ui.draw(g2d);
+
+        if (gameState == GameState.DIALOGUE) {
+            dialogueBox.draw(g2d);
+        }
 
         g2d.dispose();
     }
@@ -168,5 +183,15 @@ public class CorePanel extends JPanel implements Runnable {
 
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public DialogueBox getDialogueBox() {
+        return dialogueBox;
+    }
+
+    public void setDialogueState(String[] dialogues) {
+        gameState = GameState.DIALOGUE;
+        dialogueBox = new DialogueBox(this);
+        dialogueBox.addMessages(dialogues);
     }
 }

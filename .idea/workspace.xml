@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="npcs">
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/entity/Drawable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/entity/Collidable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/DialogueBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/NPC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/npc/OldMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/npc/OldMan.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -60,18 +64,20 @@
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ale/Documents/java projects/Game2D&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ACER/Documents/GitHub/Game2D&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -105,8 +111,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.24807.4" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.24807.4" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -131,6 +137,13 @@
       <workItem from="1734905754455" duration="12156000" />
       <workItem from="1734918203160" duration="336000" />
       <workItem from="1734946810196" duration="1479000" />
+      <workItem from="1735571801849" duration="381000" />
+      <workItem from="1735572200788" duration="222000" />
+      <workItem from="1735652808841" duration="61000" />
+      <workItem from="1735653896073" duration="241000" />
+      <workItem from="1735667008104" duration="54000" />
+      <workItem from="1735772979786" duration="380000" />
+      <workItem from="1735826450601" duration="5074000" />
     </task>
     <task id="LOCAL-00001" summary="fixed settings class">
       <option name="closed" value="true" />

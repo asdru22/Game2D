@@ -51,12 +51,17 @@ public class UI {
         drawCenterText("PAUSED", g2d, -3);
     }
 
-    public static void drawCenterText(String text, Graphics2D g2d, int offsetY) {
+    public static void drawCenterText(String text, Graphics2D g2d, double offsetY, double offsetX) {
         int textLength = (int) g2d.getFontMetrics().getStringBounds(text, g2d).getWidth();
+        final int size = ScreenSettings.getTileSize();
         int x = ScreenSettings.getScreenWidth() / 2 - textLength / 2;
-        int y = ScreenSettings.getScreenHeight() / 2 + offsetY * ScreenSettings.getTileSize();
-        g2d.drawString(text, x, y);
+        int y = (int) (ScreenSettings.getScreenHeight() / 2.0 + offsetY * size);
+        g2d.drawString(text, (int) (x + offsetX * size), y);
 
+    }
+
+    public static void drawCenterText(String text, Graphics2D g2d, double offsetY) {
+        drawCenterText(text, g2d, offsetY, 0);
     }
 
 }

@@ -35,7 +35,16 @@ public class Title extends GamePanel {
     }
 
     private void drawTitle(Graphics2D g2d) {
-        g2d.setFont(g2d.getFont().deriveFont(Font.BOLD, 100f));
+        g2d.setColor(new Color(46, 110, 129));
+        g2d.fillRect(0, 0, ScreenSettings.getScreenWidth(), ScreenSettings.getScreenHeight());
+
+        g2d.setFont(g2d.getFont().deriveFont(Font.BOLD, 90f));
+
+        // shadow
+        g2d.setColor(Color.BLACK);
+        UI.drawCenterText(ScreenSettings.getName(), g2d, -2.9,0.1);
+
+        // main title
         g2d.setColor(Color.WHITE);
         UI.drawCenterText(ScreenSettings.getName(), g2d, -3);
     }

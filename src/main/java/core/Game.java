@@ -67,6 +67,6 @@ public class Game extends JFrame implements GameLoop {
 
     @Override
     public void setGameTitle(String title) {
-
+        this.setTitle(title);
     }
 }

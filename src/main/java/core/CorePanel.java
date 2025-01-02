@@ -10,7 +10,6 @@ import io.KeyHandler;
 import io.Sound;
 import io.SoundType;
 
-import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 

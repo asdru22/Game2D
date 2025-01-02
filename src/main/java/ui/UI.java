@@ -8,6 +8,7 @@ import java.awt.*;
 public class UI {
     private final CorePanel corePanel;
     private final Font ARIAL_40, ARIAL_60;
+    private static final BasicStroke wideStroke = new BasicStroke(2);
 
     private boolean messageOn = false;
     private String message;
@@ -51,17 +52,30 @@ public class UI {
         drawCenterText("PAUSED", g2d, -3);
     }
 
-    public static void drawCenterText(String text, Graphics2D g2d, double offsetY, double offsetX) {
+    public static void drawCenterText(String text, Graphics2D g2d,
+                                      double offsetY, double offsetX, boolean underline) {
         int textLength = (int) g2d.getFontMetrics().getStringBounds(text, g2d).getWidth();
         final int size = ScreenSettings.getTileSize();
         int x = ScreenSettings.getScreenWidth() / 2 - textLength / 2;
         int y = (int) (ScreenSettings.getScreenHeight() / 2.0 + offsetY * size);
         g2d.drawString(text, (int) (x + offsetX * size), y);
 
+        if (underline) {
+            int underlineY = y + 5;
+            g2d.setStroke(wideStroke);
+            g2d.drawLine((int) (x + offsetX * size), underlineY, (int) (x + offsetX * size) + textLength, underlineY);
+        }
     }
 
     public static void drawCenterText(String text, Graphics2D g2d, double offsetY) {
-        drawCenterText(text, g2d, offsetY, 0);
+        drawCenterText(text, g2d, offsetY, 0, false);
     }
 
+    public static void drawCenterText(String text, Graphics2D g2d, double offsetY, double offsetX) {
+        drawCenterText(text, g2d, offsetY, offsetX, false);
+    }
+
+    public static void drawUnderlinedCenterText(String text, Graphics2D g2d, double offsetY) {
+        drawCenterText(text, g2d, offsetY, 0, true);
+    }
 }

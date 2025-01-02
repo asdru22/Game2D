@@ -1,6 +1,6 @@
 package core;
 
-public class PanelSettings {
+public class ScreenSettings {
     private static final int
             ORIGINAL_TILE_SIZE = 16,
             SCALE = 3,

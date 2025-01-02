@@ -1,7 +1,7 @@
 package game.object;
 
 import core.CorePanel;
-import core.PanelSettings;
+import core.ScreenSettings;
 import game.entity.Player;
 import game.entity.TileEntity;
 import io.IOUtils;
@@ -20,7 +20,7 @@ public abstract class BaseObject extends TileEntity {
 
     public void draw(Graphics2D g2d, CorePanel corePanel) {
         Player p = corePanel.getPlayer();
-        int tileSize = PanelSettings.getTileSize();
+        int tileSize = ScreenSettings.getTileSize();
 
         int screenX = worldX - p.getWorldX() + p.getScreenX();
         int screenY = worldY - p.getWorldY() + p.getScreenY();

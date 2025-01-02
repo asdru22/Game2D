@@ -14,36 +14,27 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class CorePanel extends JPanel implements Runnable {
+public class CorePanel extends GamePanel {
 
     private CollisionChecker collisionChecker;
     private TileManager tileManager;
     private ObjectPlacer objectPlacer;
-    private KeyHandler keyHandler;
     private UI ui;
     private DialogueBox dialogueBox;
 
-    private final Thread gameThread;
-    private final CoreFrame coreFrame;
-
     private GameState gameState;
-    private int inputDelay = 0;
     private GameObjects gameObjects;
 
-    public CorePanel(CoreFrame coreFrame) {
-        super();
-        this.coreFrame = coreFrame;
-        this.gameThread = new Thread(this);
-
-        initializeObjects();
-        initializePanel();
-        start();
+    public CorePanel(Game game) {
+        super(game);
     }
 
-    private void initializeObjects() {
+    @Override
+    protected void init() {
+        Sound.loop(SoundType.MUSIC);
         this.gameState = GameState.PLAYING;
         // IMPORTANT ORDER
-        this.keyHandler = new KeyHandler();
+        this.keyHandler = game.getKeyHandler();
 
         this.gameObjects = new GameObjects(this);
 
@@ -55,49 +46,13 @@ public class CorePanel extends JPanel implements Runnable {
         this.dialogueBox = new DialogueBox(this);
     }
 
-    private void initializePanel() {
-        this.setPreferredSize(new Dimension(
-                PanelSettings.getScreenWidth(), PanelSettings.getScreenHeight()));
-        this.setBackground(Color.BLACK);
-        this.setDoubleBuffered(true);  // improves performance
-        this.addKeyListener(keyHandler);
-        this.setFocusable(true);
-    }
-
-    private void start() {
-        Sound.loop(SoundType.MUSIC);
-        this.gameThread.start();
+    @Override
+    public boolean canRun() {
+        return true;
     }
 
     @Override
-    public void run() {
-        double drawInterval = 10e8 / PanelSettings.getTargetFPS(), delta = 0;
-        long lastTime = System.nanoTime(), currentTime, timer = 0, timeDelta;
-        byte fps = 0;
-        while (gameState != GameState.FINISHED) {
-
-            currentTime = System.nanoTime();
-            timeDelta = currentTime - lastTime;
-            delta += timeDelta / drawInterval;
-            timer += timeDelta;
-            lastTime = currentTime;
-
-            if (delta >= 1) {
-                update();
-                repaint();
-                delta--;
-                fps++;
-            }
-
-            if (timer >= 10e8) {
-                coreFrame.setTitle(String.format("%s (%dFPS)", PanelSettings.getName(), fps));
-                fps = 0;
-                timer = 0;
-            }
-        }
-    }
-
-    private void update() {
+    public void update() {
 
         if (inputDelay > 0) inputDelay--;
 
@@ -108,9 +63,14 @@ public class CorePanel extends JPanel implements Runnable {
         }
     }
 
+    @Override
+    public void setGameTitle(String title) {
+        game.setTitle(title);
+    }
+
     private void dialogue() {
         if (keyHandler.isKeyPressed(KeyEvent.VK_ENTER) && inputDelay == 0) {
-            inputDelay = 30;
+            inputDelay = 20;
             dialogueBox.nextMessage();
         }
     }
@@ -159,7 +119,6 @@ public class CorePanel extends JPanel implements Runnable {
     public GameObjects getGameObjects() {
         return gameObjects;
     }
-
 
     public TileManager getTileManager() {
         return tileManager;

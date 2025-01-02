@@ -2,7 +2,7 @@ package ui;
 
 import core.CorePanel;
 import core.GameState;
-import core.PanelSettings;
+import core.ScreenSettings;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,10 +13,10 @@ public class DialogueBox {
     private final CorePanel corePanel;
 
     private final int
-            size = PanelSettings.getTileSize(),
+            size = ScreenSettings.getTileSize(),
             x = size * 2,
             y = size / 2,
-            width = PanelSettings.getScreenWidth() - size * 4,
+            width = ScreenSettings.getScreenWidth() - size * 4,
             height = size * 4,
             textX = x + size,
             textY = y + size;

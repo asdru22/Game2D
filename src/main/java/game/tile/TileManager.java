@@ -1,7 +1,7 @@
 package game.tile;
 
 import core.CorePanel;
-import core.PanelSettings;
+import core.ScreenSettings;
 import core.WorldSettings;
 import game.entity.Drawable;
 import game.entity.Player;
@@ -65,7 +65,7 @@ public class TileManager implements Drawable {
 
     @Override
     public void draw(Graphics2D g2d) {
-        final int tileSize = PanelSettings.getTileSize();
+        final int tileSize = ScreenSettings.getTileSize();
         int maxRow = tileMap.length; // Map height
         int maxCol = tileMap[0].length; // Map width
         Player p = corePanel.getPlayer();

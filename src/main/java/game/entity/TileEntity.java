@@ -1,6 +1,6 @@
 package game.entity;
 
-import core.PanelSettings;
+import core.ScreenSettings;
 
 import java.awt.Rectangle;
 
@@ -9,13 +9,13 @@ public class TileEntity {
     public final Rectangle hitbox;
     public int hitboxX = 0, hitboxY = 0;
     private final String id;
-    protected final int TILE_SIZE = PanelSettings.getTileSize();
+    protected final int TILE_SIZE = ScreenSettings.getTileSize();
 
     public TileEntity(String id, int x, int y) {
         this.id = id;
         hitbox = new Rectangle(0, 0,
-                PanelSettings.getTileSize(),
-                PanelSettings.getTileSize());
+                ScreenSettings.getTileSize(),
+                ScreenSettings.getTileSize());
 
         this.worldX = x * TILE_SIZE;
         this.worldY = y * TILE_SIZE;

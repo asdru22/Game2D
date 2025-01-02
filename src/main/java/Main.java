@@ -1,7 +1,7 @@
-import core.CoreFrame;
+import core.Game;
 
 public class Main {
     public static void main(String[] args) {
-        new CoreFrame();
+        new Game();
     }
 }

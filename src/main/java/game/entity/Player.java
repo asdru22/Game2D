@@ -1,7 +1,7 @@
 package game.entity;
 
 import core.CorePanel;
-import core.PanelSettings;
+import core.ScreenSettings;
 import io.KeyHandler;
 
 import java.awt.*;
@@ -17,9 +17,9 @@ public class Player extends Entity {
         super(23, 21, 4, "player", corePanel);
         this.keyHandler = keyHandler;
 
-        int tileSize = PanelSettings.getTileSize();
-        screenX = PanelSettings.getScreenWidth() / 2 - tileSize / 2;
-        screenY = PanelSettings.getScreenHeight() / 2 - tileSize / 2;
+        int tileSize = ScreenSettings.getTileSize();
+        screenX = ScreenSettings.getScreenWidth() / 2 - tileSize / 2;
+        screenY = ScreenSettings.getScreenHeight() / 2 - tileSize / 2;
 
         hitbox.x = 8;
         hitbox.y = 16;
@@ -62,7 +62,7 @@ public class Player extends Entity {
         updateAnimation();
 
         BufferedImage image = this.getAnimations().getCurrentAnimation().getCurrentFrame();
-        int tileSize = PanelSettings.getTileSize();
+        int tileSize = ScreenSettings.getTileSize();
         g2d.drawImage(image, screenX, screenY, tileSize, tileSize, null);
     }
 

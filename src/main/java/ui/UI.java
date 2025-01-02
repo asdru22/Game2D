@@ -1,7 +1,7 @@
 package ui;
 
 import core.CorePanel;
-import core.PanelSettings;
+import core.ScreenSettings;
 
 import java.awt.*;
 
@@ -34,7 +34,7 @@ public class UI {
         g2d.setFont(this.ARIAL_40);
         g2d.setColor(Color.WHITE);
 
-        final int tileSize = PanelSettings.getTileSize();
+        final int tileSize = ScreenSettings.getTileSize();
 
         switch (corePanel.getGameState()) {
             case PLAYING -> playing(g2d);
@@ -53,8 +53,8 @@ public class UI {
 
     private void drawCenterText(String text, Graphics2D g2d, int offsetY) {
         int textLength = (int) g2d.getFontMetrics().getStringBounds(text, g2d).getWidth();
-        int x = PanelSettings.getScreenWidth() / 2 - textLength / 2;
-        int y = PanelSettings.getScreenHeight() / 2 + offsetY * PanelSettings.getTileSize();
+        int x = ScreenSettings.getScreenWidth() / 2 - textLength / 2;
+        int y = ScreenSettings.getScreenHeight() / 2 + offsetY * ScreenSettings.getTileSize();
         g2d.drawString(text, x, y);
 
     }

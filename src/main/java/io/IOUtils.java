@@ -1,6 +1,6 @@
 package io;
 
-import core.PanelSettings;
+import core.ScreenSettings;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -62,7 +62,7 @@ public class IOUtils {
     }
 
     public static BufferedImage loadScaledImage(String path) {
-        final int tileSize = PanelSettings.getTileSize();
+        final int tileSize = ScreenSettings.getTileSize();
         try {
             BufferedImage img = ImageIO.read(Objects.requireNonNull(IOUtils.class.getClassLoader().
                     getResourceAsStream(String.format("textures/%s.png", path))));

@@ -1,7 +1,7 @@
 package game.entity;
 
 import core.CorePanel;
-import core.PanelSettings;
+import core.ScreenSettings;
 import game.object.BaseObject;
 import game.tile.TileManager;
 
@@ -15,7 +15,7 @@ public class CollisionChecker {
     }
 
     public void checkTile(Entity entity) {
-        final int tileSize = PanelSettings.getTileSize();
+        final int tileSize = ScreenSettings.getTileSize();
         int entityLeft = entity.worldX + entity.hitbox.x;
         int entityRight = entityLeft + entity.hitbox.width;
         int entityTop = entity.worldY + entity.hitbox.y;

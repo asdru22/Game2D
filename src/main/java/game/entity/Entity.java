@@ -1,7 +1,7 @@
 package game.entity;
 
 import core.CorePanel;
-import core.PanelSettings;
+import core.ScreenSettings;
 import math.Vector2f;
 
 import java.awt.*;
@@ -68,7 +68,7 @@ public abstract class Entity extends TileEntity implements Drawable {
     @Override
     public void draw(Graphics2D g2d) {
         Player p = corePanel.getPlayer();
-        final int tileSize = PanelSettings.getTileSize();
+        final int tileSize = ScreenSettings.getTileSize();
 
         int screenX = worldX - p.getWorldX() + p.getScreenX();
         int screenY = worldY - p.getWorldY() + p.getScreenY();

@@ -5,9 +5,8 @@ import io.KeyHandler;
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class GamePanel extends JPanel implements GameLoop {
+public abstract class GamePanel extends JPanel {
 
-    private final Thread panelThread;
     protected final Game game;
     protected KeyHandler keyHandler;
 
@@ -28,11 +27,11 @@ public abstract class GamePanel extends JPanel implements GameLoop {
 
         init();
 
-        this.panelThread = new Thread(this);
-        panelThread.start();
     }
 
     protected abstract void init();
+
+    public abstract void loop();
 
     public void changeScene(GamePanel newPanel) {
         game.removeCurrentPanel();
@@ -40,5 +39,10 @@ public abstract class GamePanel extends JPanel implements GameLoop {
         game.add(newPanel);
         game.revalidate();
         game.repaint();
+        newPanel.requestFocusInWindow(); // Ensure the new panel gains focus
+    }
+
+    public void decreaseInputDelay() {
+        if (inputDelay > 0) inputDelay--;
     }
 }

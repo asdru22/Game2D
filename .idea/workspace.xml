@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="NPC dialogue box">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/GameLoop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/GamePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/Title.java" afterDir="false" />
+    <list default="true" id="a82c0b04-2268-4c65-821c-25a6a6f285bf" name="Changes" comment="title">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/CoreFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/CorePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/PanelSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/ScreenSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/CollisionChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/entity/TileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/entity/TileEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/BaseObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/BaseObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/tile/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/IOUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/IOUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/DialogueBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/DialogueBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/Title.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/Title.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +141,7 @@
       <workItem from="1735667008104" duration="54000" />
       <workItem from="1735772979786" duration="380000" />
       <workItem from="1735826450601" duration="5074000" />
-      <workItem from="1735839448364" duration="3160000" />
+      <workItem from="1735839448364" duration="5456000" />
     </task>
     <task id="LOCAL-00001" summary="fixed settings class">
       <option name="closed" value="true" />
@@ -321,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735839473206</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="title">
+      <option name="closed" value="true" />
+      <created>1735842861366</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1735842861366</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,6 +338,7 @@
     <MESSAGE value="new tileset" />
     <MESSAGE value="npcs" />
     <MESSAGE value="NPC dialogue box" />
-    <option name="LAST_COMMIT_MESSAGE" value="NPC dialogue box" />
+    <MESSAGE value="title" />
+    <option name="LAST_COMMIT_MESSAGE" value="title" />
   </component>
 </project>

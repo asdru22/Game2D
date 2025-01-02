@@ -4,7 +4,7 @@ import io.KeyHandler;
 
 import javax.swing.*;
 
-public class Game extends JFrame {
+public class Game extends JFrame implements GameLoop {
 
     private GamePanel currentPanel;
 
@@ -27,6 +27,9 @@ public class Game extends JFrame {
 
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
+        Thread gameThread = new Thread(this);
+        gameThread.start();
     }
 
     public void setCurrentPanel(GamePanel panel) {
@@ -39,5 +42,31 @@ public class Game extends JFrame {
 
     public void removeCurrentPanel() {
         this.remove(currentPanel);
+        currentPanel = null;
+    }
+
+    public GamePanel getCurrentPanel() {
+        return currentPanel;
+    }
+
+    @Override
+    public boolean canRun() {
+        return true;
+    }
+
+    @Override
+    public void update() {
+        currentPanel.decreaseInputDelay();
+        currentPanel.loop();
+    }
+
+    @Override
+    public void repaint() {
+        currentPanel.repaint();
+    }
+
+    @Override
+    public void setGameTitle(String title) {
+
     }
 }

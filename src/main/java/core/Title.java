@@ -1,5 +1,7 @@
 package core;
 
+import ui.UI;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
@@ -15,34 +17,26 @@ public class Title extends GamePanel {
     }
 
     @Override
-    public boolean canRun() {
-        return true;
-    }
-
-    @Override
-    public void update() {
-        if (inputDelay > 0) inputDelay--;
+    public void loop() {
 
         if (keyHandler.isKeyPressed(KeyEvent.VK_ENTER) && inputDelay == 0) {
             inputDelay = 20;
-            System.out.println("BallS");
+            changeScene(new CorePanel(game));
         }
     }
-
-    @Override
-    public void setGameTitle(String title) {
-        game.setTitle(ScreenSettings.getName());
-    }
-
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        g2d.setColor(Color.WHITE);
-        g2d.setFont(new Font("Arial", Font.BOLD, 100));
-        g2d.drawString("PEENENEI", 40, 40);
+        drawTitle(g2d);
 
         g2d.dispose();
+    }
+
+    private void drawTitle(Graphics2D g2d) {
+        g2d.setFont(g2d.getFont().deriveFont(Font.BOLD, 100f));
+        g2d.setColor(Color.WHITE);
+        UI.drawCenterText(ScreenSettings.getName(), g2d, -3);
     }
 }

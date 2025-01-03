@@ -15,35 +15,34 @@ public class Title extends GamePanel {
             iconScale = 2,
             x = ScreenSettings.getScreenWidth() / 2 - (size * iconScale) / 2,
             y = ScreenSettings.getScreenHeight() / 2 - size;
+
     private final BufferedImage icon = IOUtils.loadScaledImage("entity/player/walking/down_1");
 
-    private final Selection[] selections = new Selection[3];
+    private final Selection[] selections = new Selection[]{
+            new Selection(0, "NEW GAME", 3) {
+                @Override
+                public void onPress() {
+                    newGame();
+                }
+            },
+            new Selection(1, "LOAD GAME", 4) {
+                @Override
+                public void onPress() {
+                    loadGame();
+                }
+            },
+            new Selection(2, "QUIT", 5) {
+                @Override
+                public void onPress() {
+                    quit();
+                }
+            }
+    };
 
     private int selectionIndex = 0;
 
     public Title(Game game) {
         super(game);
-
-        selections[0] = new Selection(0, "NEW GAME", 3) {
-            @Override
-            public void onPress() {
-                newGame();
-            }
-        };
-
-        selections[1] = new Selection(1, "LOAD GAME", 4) {
-            @Override
-            public void onPress() {
-                loadGame();
-            }
-        };
-
-        selections[2] = new Selection(2, "QUIT", 5) {
-            @Override
-            public void onPress() {
-                quit();
-            }
-        };
     }
 
     @Override
@@ -106,12 +105,12 @@ public class Title extends GamePanel {
 
     private void selectUp() {
         selectionIndex--;
-        if (selectionIndex < 0) selectionIndex = 2;
+        if (selectionIndex < 0) selectionIndex = selections.length - 1;
     }
 
     private void selectDown() {
         selectionIndex++;
-        selectionIndex %= 3;
+        selectionIndex %= selections.length;
     }
 
     private void newGame() {

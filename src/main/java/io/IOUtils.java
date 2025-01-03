@@ -13,15 +13,6 @@ import java.util.Objects;
 
 public class IOUtils {
 
-    public static BufferedImage loadImage(String path) {
-        try {
-            return ImageIO.read(Objects.requireNonNull(IOUtils.class.getClassLoader().
-                    getResourceAsStream(String.format("textures/%s.png", path))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static int[][] readMap(String filePath, int maxRow, int maxCol) throws IOException {
         String mapPath = String.format("maps/%s.txt", filePath);
         int[][] r = new int[maxRow][maxCol];

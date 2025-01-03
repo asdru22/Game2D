@@ -2,6 +2,7 @@ package game.entity;
 
 import core.CorePanel;
 import core.ScreenSettings;
+import game.stats.Stats;
 import io.KeyHandler;
 
 import java.awt.*;
@@ -14,7 +15,9 @@ public class Player extends Entity {
     private final int screenX, screenY;
 
     public Player(CorePanel corePanel, KeyHandler keyHandler) {
-        super(23, 21, 4, "player", corePanel);
+        super(23, 21,
+                new Stats(11,4,4),
+                "player", corePanel);
         this.keyHandler = keyHandler;
 
         int tileSize = ScreenSettings.getTileSize();

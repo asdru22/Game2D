@@ -16,6 +16,7 @@ public class CollisionChecker {
 
     public void checkTile(Entity entity) {
         final int tileSize = ScreenSettings.getTileSize();
+        final int speed = entity.getStats().speed;
         int entityLeft = entity.worldX + entity.hitbox.x;
         int entityRight = entityLeft + entity.hitbox.width;
         int entityTop = entity.worldY + entity.hitbox.y;
@@ -27,7 +28,7 @@ public class CollisionChecker {
         if (entity.direction.contains(Direction.UP)) {
             int leftCol = entityLeft / tileSize;
             int rightCol = entityRight / tileSize;
-            int topRow = (entityTop - entity.speed) / tileSize;
+            int topRow = (entityTop - speed) / tileSize;
 
             int tileNum1 = tileManager.getTileNum(leftCol, topRow);
             int tileNum2 = tileManager.getTileNum(rightCol, topRow);
@@ -42,7 +43,7 @@ public class CollisionChecker {
         if (entity.direction.contains(Direction.DOWN)) {
             int leftCol = entityLeft / tileSize;
             int rightCol = entityRight / tileSize;
-            int bottomRow = (entityBottom + entity.speed) / tileSize;
+            int bottomRow = (entityBottom + speed) / tileSize;
 
             int tileNum1 = tileManager.getTileNum(leftCol, bottomRow);
             int tileNum2 = tileManager.getTileNum(rightCol, bottomRow);
@@ -55,7 +56,7 @@ public class CollisionChecker {
 
         // Check LEFT
         if (entity.direction.contains(Direction.LEFT)) {
-            int leftCol = (entityLeft - entity.speed) / tileSize;
+            int leftCol = (entityLeft - speed) / tileSize;
             int topRow = entityTop / tileSize;
             int bottomRow = entityBottom / tileSize;
 
@@ -70,7 +71,7 @@ public class CollisionChecker {
 
         // Check RIGHT
         if (entity.direction.contains(Direction.RIGHT)) {
-            int rightCol = (entityRight + entity.speed) / tileSize;
+            int rightCol = (entityRight + speed) / tileSize;
             int topRow = entityTop / tileSize;
             int bottomRow = entityBottom / tileSize;
 
@@ -87,6 +88,8 @@ public class CollisionChecker {
     public void checkObject(Entity entity) {
         BaseObject[] c = new BaseObject[1];
 
+        final int speed = entity.getStats().speed;
+
         for (BaseObject obj : corePanel.getGameObjects().getObjects()) {
             entity.hitbox.x = entity.worldX + entity.hitbox.x;
             entity.hitbox.y = entity.worldY + entity.hitbox.y;
@@ -95,19 +98,19 @@ public class CollisionChecker {
             obj.hitbox.y = obj.worldY + obj.hitbox.y;
 
             if (entity.direction.contains(Direction.UP)) {
-                entity.hitbox.y -= entity.speed;
+                entity.hitbox.y -= speed;
                 collidingWithObject(entity, obj, Direction.UP, c);
             }
             if (entity.direction.contains(Direction.DOWN)) {
-                entity.hitbox.y += entity.speed;
+                entity.hitbox.y += speed;
                 collidingWithObject(entity, obj, Direction.DOWN, c);
             }
             if (entity.direction.contains(Direction.LEFT)) {
-                entity.hitbox.x -= entity.speed;
+                entity.hitbox.x -= speed;
                 collidingWithObject(entity, obj, Direction.LEFT, c);
             }
             if (entity.direction.contains(Direction.RIGHT)) {
-                entity.hitbox.x += entity.speed;
+                entity.hitbox.x += speed;
                 collidingWithObject(entity, obj, Direction.RIGHT, c);
             }
 
@@ -131,6 +134,7 @@ public class CollisionChecker {
 
     public void checkEntity(Entity source, ArrayList<Entity> target){
         Entity[] e = new Entity[1];
+        final int speed = source.getStats().speed;
 
         // t = entity that isnt source
 
@@ -143,19 +147,19 @@ public class CollisionChecker {
                 t.hitbox.y = t.worldY + t.hitbox.y;
 
                 if (source.direction.contains(Direction.UP)) {
-                    source.hitbox.y -= source.speed;
+                    source.hitbox.y -= speed;
                     collidingWithEntity(source, t, Direction.UP, e);
                 }
                 if (source.direction.contains(Direction.DOWN)) {
-                    source.hitbox.y += source.speed;
+                    source.hitbox.y += speed;
                     collidingWithEntity(source, t, Direction.DOWN, e);
                 }
                 if (source.direction.contains(Direction.LEFT)) {
-                    source.hitbox.x -= source.speed;
+                    source.hitbox.x -= speed;
                     collidingWithEntity(source, t, Direction.LEFT, e);
                 }
                 if (source.direction.contains(Direction.RIGHT)) {
-                    source.hitbox.x += source.speed;
+                    source.hitbox.x += speed;
                     collidingWithEntity(source, t, Direction.RIGHT, e);
                 }
 

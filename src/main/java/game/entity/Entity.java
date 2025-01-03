@@ -2,6 +2,7 @@ package game.entity;
 
 import core.CorePanel;
 import core.ScreenSettings;
+import game.stats.Stats;
 import math.Vector2f;
 
 import java.awt.*;
@@ -9,7 +10,6 @@ import java.awt.image.BufferedImage;
 import java.util.EnumSet;
 
 public abstract class Entity extends TileEntity implements Drawable {
-    protected int speed;
 
     protected final EnumSet<Direction> direction = EnumSet.noneOf(Direction.class);
     protected final EnumSet<Direction> collisions = EnumSet.noneOf(Direction.class);
@@ -17,10 +17,13 @@ public abstract class Entity extends TileEntity implements Drawable {
     private final CorePanel corePanel;
     private final AnimationHandler animations;
 
-    public Entity(int worldX, int worldY, int speed, String id, CorePanel corePanel) {
+    private final Stats stats;
+
+    public Entity(int worldX, int worldY, Stats stats, String id, CorePanel corePanel) {
         super(id, worldX, worldY);
         this.corePanel = corePanel;
-        this.speed = speed;
+
+        this.stats = stats;
 
         resetCollisions();
         direction.add(Direction.DOWN);
@@ -58,7 +61,7 @@ public abstract class Entity extends TileEntity implements Drawable {
     }
 
     public void addSpeed(int i) {
-        this.speed += i;
+        this.stats.speed += i;
     }
 
     public CorePanel getCorePanel() {
@@ -110,7 +113,7 @@ public abstract class Entity extends TileEntity implements Drawable {
         }
 
         s.normalize();
-        s.multiply(speed);
+        s.multiply(stats.speed);
         if (s.x != 0 || s.y != 0) {
             this.getAnimations().update();
             this.worldX += (int) s.x;
@@ -121,13 +124,18 @@ public abstract class Entity extends TileEntity implements Drawable {
     public abstract void update();
 
     public void updateAnimation() {
-        if (direction.contains(Direction.UP)) this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingUp);
+        if (direction.contains(Direction.UP))
+            this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingUp);
         if (direction.contains(Direction.DOWN))
             this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingDown);
         if (direction.contains(Direction.LEFT))
             this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingLeft);
         if (direction.contains(Direction.RIGHT))
             this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingRight);
+    }
+
+    public Stats getStats() {
+        return stats;
     }
 }
 

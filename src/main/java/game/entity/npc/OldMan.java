@@ -5,6 +5,7 @@ import game.entity.Collidable;
 import game.entity.Direction;
 import game.entity.Entity;
 import game.entity.NPC;
+import game.stats.Stats;
 
 import java.util.Random;
 
@@ -18,7 +19,9 @@ public class OldMan extends NPC implements Collidable {
     };
 
     public OldMan(int worldX, int worldY, CorePanel corePanel) {
-        super(worldX, worldY, 1, "old_man", corePanel);
+        super(worldX, worldY,
+                new Stats(1),
+                "old_man", corePanel);
         setActionInterval(120);
     }
 

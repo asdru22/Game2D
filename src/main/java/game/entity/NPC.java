@@ -1,13 +1,14 @@
 package game.entity;
 
 import core.CorePanel;
+import game.stats.Stats;
 
 public abstract class NPC extends Entity {
 
     private int actionCooldown = 0, actionInterval = 60;
 
-    public NPC(int worldX, int worldY, int speed, String id, CorePanel corePanel) {
-        super(worldX, worldY, speed, id, corePanel);
+    public NPC(int worldX, int worldY, Stats stats, String id, CorePanel corePanel) {
+        super(worldX, worldY, stats, id, corePanel);
     }
 
     @Override

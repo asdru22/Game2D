@@ -19,7 +19,6 @@ public class Game extends JFrame implements GameLoop {
 
         //Sound.soundOff();
 
-//        currentPanel = new CorePanel(this);
         currentPanel = new Title(this);
         this.add(currentPanel);
 

@@ -46,10 +46,6 @@ public class Game extends JFrame implements GameLoop {
         currentPanel = null;
     }
 
-    public GamePanel getCurrentPanel() {
-        return currentPanel;
-    }
-
     @Override
     public boolean canRun() {
         return true;

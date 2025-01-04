@@ -2,23 +2,26 @@ package ui;
 
 import core.impl.ScreenSettings;
 import game.entity.Player;
+import game.stat.Stats;
+import game.stat.stats.Health;
 import io.IOUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Health {
+public class Healthbar {
     private final BufferedImage full, half, empty;
 
-    public Health() {
+    public Healthbar() {
         full = IOUtils.loadScaledImage("ui/heart_full");
         half = IOUtils.loadScaledImage("ui/heart_half");
         empty = IOUtils.loadScaledImage("ui/heart_empty");
     }
 
     public void draw(Graphics2D g2d, Player player) {
-        int hp = player.getStats().getHealth();
-        int maxHp = player.getStats().getMaxHealth();
+        Health h = (Health) player.getStat(Stats.StatType.HEALTH);
+        int hp = h.getAmount();
+        int maxHp = h.getMax();
 
         final int size = ScreenSettings.getTileSize();
 

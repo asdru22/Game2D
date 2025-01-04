@@ -2,7 +2,9 @@ package game.entity.npc;
 
 import core.CorePanel;
 import game.entity.*;
-import game.stats.Stats;
+import game.stat.Stat;
+import game.stat.Stats;
+import game.stat.stats.Speed;
 
 import java.util.Random;
 
@@ -16,9 +18,7 @@ public class OldMan extends NPC implements Collidable {
     };
 
     public OldMan(int worldX, int worldY, CorePanel corePanel) {
-        super(worldX, worldY,
-                new Stats(1),
-                "old_man", corePanel);
+        super(worldX, worldY, "old_man", corePanel);
         this.setActionInterval(120);
     }
 
@@ -45,5 +45,10 @@ public class OldMan extends NPC implements Collidable {
         animations.add(AnimationHandler.Animations.WalkingDown, "walking/down", 2);
         animations.add(AnimationHandler.Animations.WalkingLeft, "walking/left", 2);
         animations.add(AnimationHandler.Animations.WalkingRight, "walking/right", 2);
+    }
+
+    @Override
+    public void setStats() {
+        stats.add(Stats.StatType.SPEED,new Speed(1));
     }
 }

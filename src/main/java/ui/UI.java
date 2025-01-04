@@ -14,7 +14,7 @@ public class UI {
     private String message;
     private int messageCounter = 0;
 
-    private final Health health = new Health();
+    private final Healthbar healthbar = new Healthbar();
 
     public UI(CorePanel corePanel) {
         this.corePanel = corePanel;
@@ -47,7 +47,7 @@ public class UI {
     }
 
     private void playing(Graphics2D g2d) {
-        health.draw(g2d, corePanel.getPlayer());
+        healthbar.draw(g2d, corePanel.getPlayer());
     }
 
     private void paused(Graphics2D g2d) {

@@ -2,15 +2,18 @@ package game.entity.enemy;
 
 import core.CorePanel;
 import game.entity.*;
-import game.stats.Stats;
+import game.stat.Stats;
+import game.stat.stats.Damage;
+import game.stat.stats.Health;
+import game.stat.stats.Speed;
 
 import java.util.Random;
 
 public class GreenSlime extends Enemy implements Collidable {
 
-    public GreenSlime(int worldX, int worldY,CorePanel corePanel) {
-        super(worldX, worldY, new Stats(4,5,1), "green_slime", corePanel);
-        this.setHitbox(3,18,14,10);
+    public GreenSlime(int worldX, int worldY, CorePanel corePanel) {
+        super(worldX, worldY, "green_slime", corePanel);
+        this.setHitbox(3, 18, 14, 10);
         this.setActionInterval(120);
     }
 
@@ -20,6 +23,13 @@ public class GreenSlime extends Enemy implements Collidable {
         animations.add(AnimationHandler.Animations.WalkingDown, "moving", 2);
         animations.add(AnimationHandler.Animations.WalkingLeft, "moving", 2);
         animations.add(AnimationHandler.Animations.WalkingRight, "moving", 2);
+    }
+
+    @Override
+    public void setStats() {
+        stats.add(Stats.StatType.DAMAGE, new Damage(2));
+        stats.add(Stats.StatType.HEALTH, new Health(10));
+        stats.add(Stats.StatType.SPEED, new Speed(1));
     }
 
     @Override
@@ -34,7 +44,8 @@ public class GreenSlime extends Enemy implements Collidable {
 
     @Override
     public void onCollision(Entity entity) {
-        if(!(entity instanceof Player)) return;
-        this.getStats().dealDamage(entity,50);
+        if (!(entity instanceof Player)) return;
+        Damage d = (Damage) this.getStat(Stats.StatType.DAMAGE);
+        d.dealDamage(entity, 50);
     }
 }

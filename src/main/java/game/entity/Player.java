@@ -2,12 +2,14 @@ package game.entity;
 
 import core.CorePanel;
 import core.impl.ScreenSettings;
-import game.stats.Stats;
+import game.stat.Stats;
+import game.stat.stats.Damage;
+import game.stat.stats.Health;
+import game.stat.stats.Speed;
 import io.KeyHandler;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 
 public class Player extends Entity implements Collidable {
 
@@ -15,9 +17,7 @@ public class Player extends Entity implements Collidable {
     private final int screenX, screenY;
 
     public Player(CorePanel corePanel, KeyHandler keyHandler) {
-        super(23, 21,
-                new Stats(11, 4, 4),
-                "player", corePanel);
+        super(23, 21, "player", corePanel);
         this.keyHandler = keyHandler;
 
         int tileSize = ScreenSettings.getTileSize();
@@ -74,6 +74,13 @@ public class Player extends Entity implements Collidable {
         animations.add(AnimationHandler.Animations.WalkingDown, "walking/down", 2);
         animations.add(AnimationHandler.Animations.WalkingLeft, "walking/left", 2);
         animations.add(AnimationHandler.Animations.WalkingRight, "walking/right", 2);
+    }
+
+    @Override
+    public void setStats() {
+        stats.add(Stats.StatType.DAMAGE,new Damage(1));
+        stats.add(Stats.StatType.SPEED,new Speed(4));
+        stats.add(Stats.StatType.HEALTH,new Health(6));
     }
 
     public int getScreenX() {

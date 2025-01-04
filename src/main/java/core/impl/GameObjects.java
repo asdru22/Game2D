@@ -3,6 +3,8 @@ package core.impl;
 import core.CorePanel;
 import game.entity.Entity;
 import game.entity.Player;
+import game.entity.enemy.GreenSlime;
+import game.entity.npc.OldMan;
 import game.object.BaseObject;
 import game.worldevent.WorldEvents;
 
@@ -23,6 +25,10 @@ public class GameObjects {
     public GameObjects(CorePanel corePanel) {
         player = new Player(corePanel, corePanel.getKeyHandler());
         entities.add(player);
+        entities.add(new OldMan(21, 21, corePanel));
+        entities.add(new GreenSlime(23,36,corePanel));
+        entities.add(new GreenSlime(23,37,corePanel));
+
         this.corePanel = corePanel;
         worldEvents = new WorldEvents(corePanel);
     }
@@ -68,9 +74,5 @@ public class GameObjects {
 
     public ArrayList<Entity> getEntities() {
         return entities;
-    }
-
-    public WorldEvents getEvents() {
-        return worldEvents;
     }
 }

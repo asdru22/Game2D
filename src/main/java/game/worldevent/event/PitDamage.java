@@ -1,5 +1,8 @@
 package game.worldevent.event;
 
+import game.stat.Stats;
+import game.stat.stats.Damage;
+import game.stat.stats.Health;
 import game.worldevent.Event;
 
 public class PitDamage extends Event {
@@ -12,6 +15,7 @@ public class PitDamage extends Event {
     @Override
     public void event() {
         corePanel.setDialogueState(new String[]{"You fall into a pit stupid"});
-        corePanel.getPlayer().getStats().applyDamage(1, 10);
+        Health h = (Health) corePanel.getPlayer().getStat(Stats.StatType.DAMAGE);
+        h.applyDamage(1, 10);
     }
 }

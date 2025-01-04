@@ -3,6 +3,9 @@ package core;
 import core.impl.GameObjects;
 import core.impl.GameState;
 import core.impl.PanelObjects;
+import game.stat.Stats;
+import game.stat.stats.Damage;
+import game.stat.stats.Health;
 import ui.MessageBox;
 import ui.UI;
 import game.entity.CollisionChecker;
@@ -73,7 +76,8 @@ public class CorePanel extends GamePanel {
     private void playing() {
 
         if (keyHandler.isKeyPressed(KeyEvent.VK_G) && inputDelay == 0) {
-            getPlayer().getStats().applyDamage(1);
+            Health h = (Health) (getPlayer().getStat(Stats.StatType.DAMAGE));
+            h.applyDamage(1);
             inputDelay = 30;
             return;
         }

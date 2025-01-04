@@ -1,6 +1,8 @@
 package game.worldevent.event;
 
 import game.entity.Direction;
+import game.stat.Stats;
+import game.stat.stats.Health;
 import game.worldevent.Event;
 
 public class HealingPool extends Event {
@@ -14,6 +16,7 @@ public class HealingPool extends Event {
     @Override
     public void event() {
         corePanel.setDialogueState(new String[]{"You drink the water, your health is restored"});
-        corePanel.getPlayer().getStats().fullHeal();
+        Health h = (Health) (corePanel.getPlayer().getStat(Stats.StatType.HEALTH));
+        h.fullHeal();
     }
 }

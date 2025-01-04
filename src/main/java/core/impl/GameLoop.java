@@ -33,7 +33,6 @@ public interface GameLoop extends Runnable {
         }
     }
 
-    // Metodi che gli oggetti implementatori devono fornire
     boolean canRun();
     void update();
     void repaint();

@@ -8,6 +8,8 @@ import game.worldevent.WorldEvents;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Objects;
 
 public class GameObjects {
 
@@ -26,9 +28,9 @@ public class GameObjects {
     }
 
     public void update() {
-        entities.forEach(obj -> {
-            if (obj != null) {
-                obj.update();
+        entities.forEach(e -> {
+            if (e != null) {
+                e.mainLoop();
             }
         });
         worldEvents.update();
@@ -41,11 +43,11 @@ public class GameObjects {
                 obj.draw(g2d, corePanel);
             }
         });
-        entities.forEach(obj -> {
-            if (obj != null) {
-                obj.draw(g2d);
-            }
-        });
+
+        entities.stream()
+                .filter(Objects::nonNull)
+                .sorted(Comparator.comparingInt(Entity::getWorldY))
+                .forEach(e -> e.draw(g2d));
     }
 
     public Player getPlayer() {

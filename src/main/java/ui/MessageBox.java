@@ -59,6 +59,7 @@ public class MessageBox {
     }
 
     public void addMessages(String[] newMessages) {
+        messageIndex = 0;
         messages.addAll(List.of(newMessages));
     }
 
@@ -70,7 +71,6 @@ public class MessageBox {
     }
 
     private void reset(){
-        messageIndex = 0;
         messages.clear();
         corePanel.setGameState(GameState.PLAYING);
     }

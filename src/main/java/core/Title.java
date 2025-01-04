@@ -119,7 +119,6 @@ public class Title extends GamePanel {
     }
 
     private void loadGame() {
-        System.out.println("Load Game");
     }
 
     private void quit() {

@@ -14,7 +14,7 @@ public class Boots extends BaseObject {
     public void onCollision(CorePanel corePanel) {
         Player player = corePanel.getGameObjects().getPlayer();
         Sound.play(SoundType.POWERUP);
-        player.addSpeed(2);
+        player.getStats().addSpeed(2);
         corePanel.getGameObjects().getObjects().remove(this);
         corePanel.getGameUI().showMessage("Speed up");
     }

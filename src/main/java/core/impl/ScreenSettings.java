@@ -33,4 +33,8 @@ public class ScreenSettings {
         return TARGET_FPS;
     }
 
+    public static int getScale(){
+        return SCALE;
+    }
+
 }

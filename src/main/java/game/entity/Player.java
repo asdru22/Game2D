@@ -9,14 +9,14 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
-public class Player extends Entity {
+public class Player extends Entity implements Collidable {
 
     private final KeyHandler keyHandler;
     private final int screenX, screenY;
 
     public Player(CorePanel corePanel, KeyHandler keyHandler) {
         super(23, 21,
-                new Stats(11,4,4),
+                new Stats(11, 4, 4),
                 "player", corePanel);
         this.keyHandler = keyHandler;
 
@@ -64,9 +64,16 @@ public class Player extends Entity {
 
         updateAnimation();
 
-        BufferedImage image = this.getAnimations().getCurrentAnimation().getCurrentFrame();
-        int tileSize = ScreenSettings.getTileSize();
-        g2d.drawImage(image, screenX, screenY, tileSize, tileSize, null);
+        drawImage(g2d, this.getAnimations().getCurrentAnimation().getCurrentFrame(),
+                screenX, screenY, ScreenSettings.getTileSize());
+    }
+
+    @Override
+    public void addAnimations() {
+        animations.add(AnimationHandler.Animations.WalkingUp, "walking/up", 2);
+        animations.add(AnimationHandler.Animations.WalkingDown, "walking/down", 2);
+        animations.add(AnimationHandler.Animations.WalkingLeft, "walking/left", 2);
+        animations.add(AnimationHandler.Animations.WalkingRight, "walking/right", 2);
     }
 
     public int getScreenX() {
@@ -77,4 +84,11 @@ public class Player extends Entity {
         return screenY;
     }
 
+    @Override
+    public void onCollision(Entity entity) {
+        // triggers for enemy to player and player to enemy collision, but not npc to player collision
+        if (entity instanceof Collidable && entity instanceof Enemy) {
+            ((Collidable) entity).onCollision(this);
+        }
+    }
 }

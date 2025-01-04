@@ -16,7 +16,7 @@ public class CollisionChecker {
 
     public void checkTile(Entity entity) {
         final int tileSize = ScreenSettings.getTileSize();
-        final int speed = entity.getStats().speed;
+        final int speed = entity.getStats().getSpeed();
         int entityLeft = entity.worldX + entity.hitbox.x;
         int entityRight = entityLeft + entity.hitbox.width;
         int entityTop = entity.worldY + entity.hitbox.y;
@@ -88,7 +88,7 @@ public class CollisionChecker {
     public void checkObject(Entity entity) {
         BaseObject[] c = new BaseObject[1];
 
-        final int speed = entity.getStats().speed;
+        final int speed = entity.getStats().getSpeed();
 
         for (BaseObject obj : corePanel.getGameObjects().getObjects()) {
             entity.hitbox.x = entity.worldX + entity.hitbox.x;
@@ -132,14 +132,14 @@ public class CollisionChecker {
         }
     }
 
-    public void checkEntity(Entity source, ArrayList<Entity> target){
+    public void checkEntity(Entity source, ArrayList<Entity> target) {
         Entity[] e = new Entity[1];
-        final int speed = source.getStats().speed;
+        final int speed = source.getStats().getSpeed();
 
         // t = entity that isnt source
 
         for (Entity t : target) {
-            if(!t.equals(source)){
+            if (!t.equals(source) && t instanceof Collidable) {
                 source.hitbox.x = source.worldX + source.hitbox.x;
                 source.hitbox.y = source.worldY + source.hitbox.y;
 
@@ -176,9 +176,7 @@ public class CollisionChecker {
                                      Direction dir, Entity[] collidedWith) {
         if (source.hitbox.intersects(target.hitbox)) {
             collidedWith[0] = target;
-            if(target instanceof Collidable){
-                ((Collidable) target).onCollision(source);
-            }
+            ((Collidable) target).onCollision(source);
             source.collisions.add(dir);
         }
     }

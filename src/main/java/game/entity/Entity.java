@@ -8,6 +8,7 @@ import math.Vector2f;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.EnumSet;
+import java.util.Objects;
 
 public abstract class Entity extends TileEntity implements Drawable {
 
@@ -15,7 +16,7 @@ public abstract class Entity extends TileEntity implements Drawable {
     protected final EnumSet<Direction> collisions = EnumSet.noneOf(Direction.class);
 
     private final CorePanel corePanel;
-    private final AnimationHandler animations;
+    protected final AnimationHandler animations;
 
     private final Stats stats;
 
@@ -29,12 +30,11 @@ public abstract class Entity extends TileEntity implements Drawable {
         direction.add(Direction.DOWN);
 
         animations = new AnimationHandler(this);
-        animations.add(AnimationHandler.Animations.WalkingUp, "walking/up", 2);
-        animations.add(AnimationHandler.Animations.WalkingDown, "walking/down", 2);
-        animations.add(AnimationHandler.Animations.WalkingLeft, "walking/left", 2);
-        animations.add(AnimationHandler.Animations.WalkingRight, "walking/right", 2);
+        addAnimations();
         animations.initialize();
     }
+
+    public abstract void addAnimations();
 
     public int getWorldY() {
         return worldY;
@@ -60,16 +60,16 @@ public abstract class Entity extends TileEntity implements Drawable {
         return animations;
     }
 
-    public void addSpeed(int i) {
-        this.stats.speed += i;
-    }
-
     public CorePanel getCorePanel() {
         return corePanel;
     }
 
     @Override
     public void draw(Graphics2D g2d) {
+
+//        g2d.setColor(Color.RED);
+//        g2d.drawRect(hitbox.x, hitbox.y, hitbox.width, hitbox.height);
+
         Player p = corePanel.getPlayer();
         final int tileSize = ScreenSettings.getTileSize();
 
@@ -82,10 +82,20 @@ public abstract class Entity extends TileEntity implements Drawable {
         ) {
 
             updateAnimation();
+            drawImage(g2d, this.getAnimations().getCurrentAnimation().getCurrentFrame(), screenX, screenY, tileSize);
+        }
+    }
 
-            BufferedImage image = this.getAnimations().getCurrentAnimation().getCurrentFrame();
-            g2d.drawImage(image, screenX, screenY,
-                    tileSize, tileSize, null);
+    protected void drawImage(Graphics2D g2d, BufferedImage image, int screenX,
+                             int screenY, int tileSize) {
+        if (this.getStats().isInvulnerable()) {
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+        }
+        g2d.drawImage(image, screenX, screenY,
+                tileSize, tileSize, null);
+
+        if (this.getStats().isInvulnerable()) {
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         }
     }
 
@@ -113,12 +123,17 @@ public abstract class Entity extends TileEntity implements Drawable {
         }
 
         s.normalize();
-        s.multiply(stats.speed);
+        s.multiply(stats.getSpeed());
         if (s.x != 0 || s.y != 0) {
             this.getAnimations().update();
             this.worldX += (int) s.x;
             this.worldY += (int) s.y;
         }
+    }
+
+    public void mainLoop() {
+        stats.decreaseInvulnerabilityTime();
+        update();
     }
 
     public abstract void update();

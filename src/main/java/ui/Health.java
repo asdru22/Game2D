@@ -17,8 +17,8 @@ public class Health {
     }
 
     public void draw(Graphics2D g2d, Player player) {
-        int hp = player.getStats().health;
-        int maxHp = player.getStats().maxHealth;
+        int hp = player.getStats().getHealth();
+        int maxHp = player.getStats().getMaxHealth();
 
         final int size = ScreenSettings.getTileSize();
 

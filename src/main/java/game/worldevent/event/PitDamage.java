@@ -12,6 +12,6 @@ public class PitDamage extends Event {
     @Override
     public void event() {
         corePanel.setDialogueState(new String[]{"You fall into a pit stupid"});
-        corePanel.getPlayer().getStats().health--;
+        corePanel.getPlayer().getStats().applyDamage(1, 10);
     }
 }

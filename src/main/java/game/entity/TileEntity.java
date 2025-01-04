@@ -14,8 +14,8 @@ public class TileEntity {
     public TileEntity(String id, int x, int y) {
         this.id = id;
         hitbox = new Rectangle(0, 0,
-                ScreenSettings.getTileSize(),
-                ScreenSettings.getTileSize());
+                TILE_SIZE,
+                TILE_SIZE);
 
         this.worldX = x * TILE_SIZE;
         this.worldY = y * TILE_SIZE;
@@ -23,5 +23,12 @@ public class TileEntity {
 
     public String getId() {
         return id;
+    }
+
+    public void setHitbox(int x, int y, int width, int height) {
+        hitbox.setBounds(x, y, width * ScreenSettings.getScale(),
+                height * ScreenSettings.getScale());
+        hitboxX = x;
+        hitboxY = y;
     }
 }

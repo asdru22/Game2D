@@ -1,5 +1,6 @@
 package core;
 
+import core.impl.ScreenSettings;
 import io.IOUtils;
 import ui.Selection;
 import ui.UI;

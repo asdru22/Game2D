@@ -1,4 +1,4 @@
-package core;
+package core.impl;
 
 public class ScreenSettings {
     private static final int

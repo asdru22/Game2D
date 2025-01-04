@@ -1,6 +1,6 @@
 package io;
 
-import core.ScreenSettings;
+import core.impl.ScreenSettings;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

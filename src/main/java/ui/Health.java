@@ -1,6 +1,6 @@
 package ui;
 
-import core.ScreenSettings;
+import core.impl.ScreenSettings;
 import game.entity.Player;
 import io.IOUtils;
 

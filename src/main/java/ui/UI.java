@@ -1,7 +1,7 @@
 package ui;
 
 import core.CorePanel;
-import core.ScreenSettings;
+import core.impl.ScreenSettings;
 
 import java.awt.*;
 

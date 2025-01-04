@@ -1,7 +1,7 @@
 package game.entity;
 
 import core.CorePanel;
-import core.ScreenSettings;
+import core.impl.ScreenSettings;
 import game.object.BaseObject;
 import game.tile.TileManager;
 

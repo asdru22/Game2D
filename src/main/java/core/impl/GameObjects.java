@@ -1,8 +1,10 @@
-package core;
+package core.impl;
 
+import core.CorePanel;
 import game.entity.Entity;
 import game.entity.Player;
 import game.object.BaseObject;
+import game.worldevent.WorldEvents;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,29 +16,32 @@ public class GameObjects {
     private final Player player;
     private final ArrayList<BaseObject> objects = new ArrayList<>();
     private final ArrayList<Entity> entities = new ArrayList<>();
+    private final WorldEvents worldEvents;
 
     public GameObjects(CorePanel corePanel) {
         player = new Player(corePanel, corePanel.getKeyHandler());
         entities.add(player);
         this.corePanel = corePanel;
+        worldEvents = new WorldEvents(corePanel);
     }
 
     public void update() {
-        entities.forEach(obj->{
+        entities.forEach(obj -> {
             if (obj != null) {
                 obj.update();
             }
         });
+        worldEvents.update();
     }
 
     public void draw(Graphics2D g2d) {
 
-        objects.forEach(obj->{
+        objects.forEach(obj -> {
             if (obj != null) {
                 obj.draw(g2d, corePanel);
             }
         });
-        entities.forEach(obj->{
+        entities.forEach(obj -> {
             if (obj != null) {
                 obj.draw(g2d);
             }
@@ -61,5 +66,9 @@ public class GameObjects {
 
     public ArrayList<Entity> getEntities() {
         return entities;
+    }
+
+    public WorldEvents getEvents() {
+        return worldEvents;
     }
 }

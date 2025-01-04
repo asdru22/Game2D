@@ -1,8 +1,8 @@
 package game.tile;
 
 import core.CorePanel;
-import core.ScreenSettings;
-import core.WorldSettings;
+import core.impl.ScreenSettings;
+import core.impl.WorldSettings;
 import game.entity.Drawable;
 import game.entity.Player;
 import io.IOUtils;

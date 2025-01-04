@@ -1,7 +1,7 @@
 package game.entity;
 
 import core.CorePanel;
-import core.ScreenSettings;
+import core.impl.ScreenSettings;
 import game.stats.Stats;
 import math.Vector2f;
 
@@ -132,6 +132,10 @@ public abstract class Entity extends TileEntity implements Drawable {
             this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingLeft);
         if (direction.contains(Direction.RIGHT))
             this.getAnimations().setCurrent(AnimationHandler.Animations.WalkingRight);
+    }
+
+    public EnumSet<Direction> getDirections() {
+        return direction;
     }
 
     public Stats getStats() {

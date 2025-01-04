@@ -1,6 +1,8 @@
 package core;
 
+import core.impl.GameLoop;
 import io.KeyHandler;
+import io.Sound;
 
 import javax.swing.*;
 
@@ -17,7 +19,7 @@ public class Game extends JFrame implements GameLoop {
 
         this.keyHandler = new KeyHandler();
 
-        //Sound.soundOff();
+        Sound.soundOff();
 
         currentPanel = new Title(this);
         this.add(currentPanel);

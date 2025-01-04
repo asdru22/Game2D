@@ -1,10 +1,12 @@
 package core;
 
-import ui.DialogueBox;
+import core.impl.GameObjects;
+import core.impl.GameState;
+import core.impl.PanelObjects;
+import ui.MessageBox;
 import ui.UI;
 import game.entity.CollisionChecker;
 import game.entity.Player;
-import game.object.ObjectPlacer;
 import game.tile.TileManager;
 import io.KeyHandler;
 import io.Sound;
@@ -15,14 +17,9 @@ import java.awt.event.KeyEvent;
 
 public class CorePanel extends GamePanel {
 
-    private CollisionChecker collisionChecker;
-    private TileManager tileManager;
-    private ObjectPlacer objectPlacer;
-    private UI ui;
-    private DialogueBox dialogueBox;
-
     private GameState gameState;
     private GameObjects gameObjects;
+    private PanelObjects panelObjects;
 
     public CorePanel(Game game) {
         super(game);
@@ -35,11 +32,8 @@ public class CorePanel extends GamePanel {
         // IMPORTANT ORDER
         this.keyHandler = game.getKeyHandler();
         this.gameObjects = new GameObjects(this);
-        this.collisionChecker = new CollisionChecker(this);
-        this.tileManager = new TileManager(this);
-        this.objectPlacer = new ObjectPlacer(this);
-        this.ui = new UI(this);
-        this.dialogueBox = new DialogueBox(this);
+
+        this.panelObjects = new PanelObjects(this);
     }
 
     @Override
@@ -47,14 +41,14 @@ public class CorePanel extends GamePanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        tileManager.draw(g2d);
+        panelObjects.getTileManager().draw(g2d);
 
         gameObjects.draw(g2d);
 
-        ui.draw(g2d);
+        panelObjects.getUI().draw(g2d);
 
         if (gameState == GameState.DIALOGUE) {
-            dialogueBox.draw(g2d);
+            panelObjects.getMessageBox().draw(g2d);
         }
 
         g2d.dispose();
@@ -72,7 +66,7 @@ public class CorePanel extends GamePanel {
     private void dialogue() {
         if (keyHandler.isKeyPressed(KeyEvent.VK_ENTER) && inputDelay == 0) {
             inputDelay = 20;
-            dialogueBox.nextMessage();
+            panelObjects.getMessageBox().nextMessage();
         }
     }
 
@@ -111,7 +105,7 @@ public class CorePanel extends GamePanel {
     }
 
     public TileManager getTileManager() {
-        return tileManager;
+        return panelObjects.getTileManager();
     }
 
     public KeyHandler getKeyHandler() {
@@ -119,11 +113,11 @@ public class CorePanel extends GamePanel {
     }
 
     public CollisionChecker getCollisionChecker() {
-        return collisionChecker;
+        return panelObjects.getCollisionChecker();
     }
 
     public UI getGameUI() {
-        return ui;
+        return panelObjects.getUI();
     }
 
     public GameState getGameState() {
@@ -134,13 +128,12 @@ public class CorePanel extends GamePanel {
         this.gameState = gameState;
     }
 
-    public DialogueBox getDialogueBox() {
-        return dialogueBox;
+    public MessageBox getDialogueBox() {
+        return panelObjects.getMessageBox();
     }
 
     public void setDialogueState(String[] dialogues) {
         gameState = GameState.DIALOGUE;
-        dialogueBox = new DialogueBox(this);
-        dialogueBox.addMessages(dialogues);
+        panelObjects.getMessageBox().addMessages(dialogues);
     }
 }

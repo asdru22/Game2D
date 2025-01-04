@@ -1,6 +1,6 @@
 package game.entity;
 
-import core.ScreenSettings;
+import core.impl.ScreenSettings;
 
 import java.awt.Rectangle;
 

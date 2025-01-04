@@ -1,4 +1,4 @@
-package core;
+package core.impl;
 
 public interface GameLoop extends Runnable {
 

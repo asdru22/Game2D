@@ -1,4 +1,4 @@
-package core;
+package core.impl;
 
 public class WorldSettings {
     private static final int

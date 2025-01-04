@@ -1,7 +1,7 @@
 package game.object;
 
 import core.CorePanel;
-import core.GameState;
+import core.impl.GameState;
 import io.Sound;
 import io.SoundType;
 

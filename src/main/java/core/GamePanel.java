@@ -1,5 +1,6 @@
 package core;
 
+import core.impl.ScreenSettings;
 import io.KeyHandler;
 
 import javax.swing.*;

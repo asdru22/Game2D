@@ -1,14 +1,14 @@
 package ui;
 
 import core.CorePanel;
-import core.GameState;
-import core.ScreenSettings;
+import core.impl.GameState;
+import core.impl.ScreenSettings;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DialogueBox {
+public class MessageBox {
 
     private final CorePanel corePanel;
 
@@ -24,7 +24,7 @@ public class DialogueBox {
     private final ArrayList<String> messages = new ArrayList<>();
     private int messageIndex = 0;
 
-    public DialogueBox(CorePanel corePanel) {
+    public MessageBox(CorePanel corePanel) {
         this.corePanel = corePanel;
     }
 
@@ -69,9 +69,6 @@ public class DialogueBox {
         }
     }
 
-    public int getIndex() {
-        return messageIndex;
-    }
     private void reset(){
         messageIndex = 0;
         messages.clear();

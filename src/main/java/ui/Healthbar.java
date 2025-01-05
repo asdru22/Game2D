@@ -19,7 +19,7 @@ public class Healthbar {
     }
 
     public void draw(Graphics2D g2d, Player player) {
-        Health h = (Health) player.getStat(Stats.StatType.HEALTH);
+        Health h = player.getStats().getStat(Health.class);
         int hp = h.getAmount();
         int maxHp = h.getMax();
 

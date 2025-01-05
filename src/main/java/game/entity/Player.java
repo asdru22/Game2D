@@ -2,7 +2,6 @@ package game.entity;
 
 import core.CorePanel;
 import core.impl.ScreenSettings;
-import game.stat.Stats;
 import game.stat.stats.Damage;
 import game.stat.stats.Health;
 import game.stat.stats.Speed;
@@ -78,9 +77,9 @@ public class Player extends Entity implements Collidable {
 
     @Override
     public void setStats() {
-        stats.add(Stats.StatType.DAMAGE,new Damage(1));
-        stats.add(Stats.StatType.SPEED,new Speed(4));
-        stats.add(Stats.StatType.HEALTH,new Health(6));
+        stats.addStat(new Damage(1));
+        stats.addStat(new Speed(4));
+        stats.addStat(new Health(6));
     }
 
     public int getScreenX() {

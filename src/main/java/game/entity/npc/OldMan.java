@@ -2,8 +2,6 @@ package game.entity.npc;
 
 import core.CorePanel;
 import game.entity.*;
-import game.stat.Stat;
-import game.stat.Stats;
 import game.stat.stats.Speed;
 
 import java.util.Random;
@@ -49,6 +47,6 @@ public class OldMan extends NPC implements Collidable {
 
     @Override
     public void setStats() {
-        stats.add(Stats.StatType.SPEED,new Speed(1));
+        stats.addStat(new Speed(1));
     }
 }

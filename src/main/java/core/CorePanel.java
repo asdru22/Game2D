@@ -76,7 +76,7 @@ public class CorePanel extends GamePanel {
     private void playing() {
 
         if (keyHandler.isKeyPressed(KeyEvent.VK_G) && inputDelay == 0) {
-            Health h = (Health) (getPlayer().getStat(Stats.StatType.DAMAGE));
+            Health h = getPlayer().getStats().getStat(Health.class);
             h.applyDamage(1);
             inputDelay = 30;
             return;

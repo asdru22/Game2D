@@ -2,7 +2,6 @@ package game.entity.enemy;
 
 import core.CorePanel;
 import game.entity.*;
-import game.stat.Stats;
 import game.stat.stats.Damage;
 import game.stat.stats.Health;
 import game.stat.stats.Speed;
@@ -27,9 +26,9 @@ public class GreenSlime extends Enemy implements Collidable {
 
     @Override
     public void setStats() {
-        stats.add(Stats.StatType.DAMAGE, new Damage(2));
-        stats.add(Stats.StatType.HEALTH, new Health(10));
-        stats.add(Stats.StatType.SPEED, new Speed(1));
+        stats.addStat(new Damage(2));
+        stats.addStat(new Health(10));
+        stats.addStat(new Speed(1));
     }
 
     @Override
@@ -45,7 +44,6 @@ public class GreenSlime extends Enemy implements Collidable {
     @Override
     public void onCollision(Entity entity) {
         if (!(entity instanceof Player)) return;
-        Damage d = (Damage) this.getStat(Stats.StatType.DAMAGE);
-        d.dealDamage(entity, 50);
+        this.getStats().getStat(Damage.class).dealDamage(entity, 50);
     }
 }

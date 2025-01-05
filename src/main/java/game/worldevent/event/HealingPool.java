@@ -16,7 +16,7 @@ public class HealingPool extends Event {
     @Override
     public void event() {
         corePanel.setDialogueState(new String[]{"You drink the water, your health is restored"});
-        Health h = (Health) (corePanel.getPlayer().getStat(Stats.StatType.HEALTH));
+        Health h = corePanel.getPlayer().getStats().getStat(Health.class);
         h.fullHeal();
     }
 }

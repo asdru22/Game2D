@@ -3,7 +3,7 @@ package game.entity;
 import core.CorePanel;
 import core.impl.ScreenSettings;
 import game.object.BaseObject;
-import game.stat.Stats;
+import game.stat.stats.Speed;
 import game.tile.TileManager;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class CollisionChecker {
 
     public void checkTile(Entity entity) {
         final int tileSize = ScreenSettings.getTileSize();
-        final int speed = entity.getStat(Stats.StatType.SPEED).getAmount();
+        final int speed = entity.getStats().getStat(Speed.class).getAmount();
         int entityLeft = entity.worldX + entity.hitbox.x;
         int entityRight = entityLeft + entity.hitbox.width;
         int entityTop = entity.worldY + entity.hitbox.y;
@@ -89,7 +89,7 @@ public class CollisionChecker {
     public void checkObject(Entity entity) {
         BaseObject[] c = new BaseObject[1];
 
-        final int speed = entity.getStat(Stats.StatType.SPEED).getAmount();
+        final int speed = entity.getStats().getStat(Speed.class).getAmount();
 
         for (BaseObject obj : corePanel.getGameObjects().getObjects()) {
             entity.hitbox.x = entity.worldX + entity.hitbox.x;
@@ -135,7 +135,7 @@ public class CollisionChecker {
 
     public void checkEntity(Entity source, ArrayList<Entity> target) {
         Entity[] e = new Entity[1];
-        final int speed = source.getStat(Stats.StatType.SPEED).getAmount();
+        final int speed = source.getStats().getStat(Speed.class).getAmount();
 
         // t = entity that isnt source
 

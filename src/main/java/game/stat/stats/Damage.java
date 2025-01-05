@@ -2,8 +2,6 @@ package game.stat.stats;
 
 import game.entity.Entity;
 import game.stat.Stat;
-import game.stat.Stats;
-
 
 public class Damage extends Stat {
     public Damage(int amount) {
@@ -11,7 +9,7 @@ public class Damage extends Stat {
     }
 
     public void dealDamage(Entity target, int invulnerabilityTime) {
-        Health h = (Health) target.getStatsMap().get(Stats.StatType.HEALTH);
+        Health h = target.getStats().getStat(Health.class);
         h.applyDamage(this.getAmount(), invulnerabilityTime);
     }
 

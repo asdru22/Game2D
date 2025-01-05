@@ -2,15 +2,14 @@ package game.entity;
 
 import core.CorePanel;
 import core.impl.ScreenSettings;
-import game.stat.Stat;
 import game.stat.Stats;
 import game.stat.stats.Health;
+import game.stat.stats.Speed;
 import math.Vector2f;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.EnumSet;
-import java.util.Map;
 
 public abstract class Entity extends TileEntity implements Drawable {
 
@@ -100,7 +99,7 @@ public abstract class Entity extends TileEntity implements Drawable {
         }
 
         s.normalize();
-        s.multiply(getStat(Stats.StatType.SPEED).getAmount());
+        s.multiply(stats.getStat(Speed.class).getAmount());
         if (s.x != 0 || s.y != 0) {
             this.getAnimations().update();
             this.worldX += (int) s.x;
@@ -109,7 +108,7 @@ public abstract class Entity extends TileEntity implements Drawable {
     }
 
     public void mainLoop() {
-        Health h = (Health) stats.get().get(Stats.StatType.HEALTH);
+        Health h = stats.getStat(Health.class);
         if (h != null) {
             h.decreaseInvulnerabilityTime();
         }
@@ -138,16 +137,8 @@ public abstract class Entity extends TileEntity implements Drawable {
         return direction;
     }
 
-    public Map<Stats.StatType, Stat> getStatsMap() {
-        return stats.get();
-    }
-
     public Stats getStats() {
         return stats;
-    }
-
-    public Stat getStat(Stats.StatType statType) {
-        return stats.get().get(statType);
     }
 
     public int getWorldY() {

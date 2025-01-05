@@ -1,7 +1,6 @@
 package game.stat.stats;
 
 import game.stat.CappedStat;
-import game.stat.Stats;
 
 public class Health extends CappedStat {
 

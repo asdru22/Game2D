@@ -13,7 +13,7 @@ public class GreenSlime extends Enemy implements Collidable {
     public GreenSlime(int worldX, int worldY, CorePanel corePanel) {
         super(worldX, worldY, "green_slime", corePanel);
         this.setHitbox(3, 18, 14, 10);
-        this.setActionInterval(120);
+        this.setActionInterval(50);
     }
 
     @Override
